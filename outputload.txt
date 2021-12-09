@@ -1,0 +1,176 @@
+[WARN]  Running against a source checkout. In order to get our runtime dependencies we'll have to invoke Maven. Depending on the state of your system, this may take ~30-45 seconds
+[DEBUG]  Running 'mvn -pl site.ycsb:ignite-binding -am package -DskipTests dependency:build-classpath -DincludeScope=compile -Dmdep.outputFilterFile=true'
+/usr/lib/jvm/java-11-openjdk/bin/java -cp /home/adam/Cours/PFE/source/YCSB/ignite/conf:/home/adam/Cours/PFE/source/YCSB/ignite/target/ignite-binding-0.18.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/htrace/htrace-core4/4.1.0-incubating/htrace-core4-4.1.0-incubating.jar:/home/adam/.m2/repository/org/gridgain/ignite-shmem/1.0.0/ignite-shmem-1.0.0.jar:/home/adam/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-core/7.4.0/lucene-core-7.4.0.jar:/home/adam/.m2/repository/org/hdrhistogram/HdrHistogram/2.1.4/HdrHistogram-2.1.4.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-indexing/2.13.0-SNAPSHOT/ignite-indexing-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-queryparser/7.4.0/lucene-queryparser-7.4.0.jar:/home/adam/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/adam/.m2/repository/org/jetbrains/annotations/16.0.3/annotations-16.0.3.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-analyzers-common/7.4.0/lucene-analyzers-common-7.4.0.jar:/home/adam/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4/jackson-core-asl-1.9.4.jar:/home/adam/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/home/adam/Cours/PFE/source/YCSB/core/target/core-0.18.0-SNAPSHOT.jar:/home/adam/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-log4j2/2.13.0-SNAPSHOT/ignite-log4j2-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-core/2.13.0-SNAPSHOT/ignite-core-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/com/h2database/h2/1.4.197/h2-1.4.197.jar:/home/adam/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4/jackson-mapper-asl-1.9.4.jar:/home/adam/.m2/repository/javax/cache/cache-api/1.0.0/cache-api-1.0.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-queries/7.4.0/lucene-queries-7.4.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-sandbox/7.4.0/lucene-sandbox-7.4.0.jar site.ycsb.Client -db site.ycsb.db.ignite.IgniteClient -p hosts=127.0.0.1 -s -P workloads/workloadb -threads 8 -p operationcount=100000 -p recordcount=100000 -load
+Command line: -db site.ycsb.db.ignite.IgniteClient -p hosts=127.0.0.1 -s -P workloads/workloadb -threads 8 -p operationcount=100000 -p recordcount=100000 -load
+YCSB Client 0.18.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+2021-12-09 14:17:58:222 0 sec: 0 operations; est completion in 0 second 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.ignite.internal.util.GridUnsafe$2 (file:/home/adam/.m2/repository/org/apache/ignite/ignite-core/2.13.0-SNAPSHOT/ignite-core-2.13.0-SNAPSHOT.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of org.apache.ignite.internal.util.GridUnsafe$2
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[14:17:58][INFO ][Thread-2] Start Ignite client node.
+[14:17:58][WARN ][Thread-2] Ignite work directory is not provided, automatically resolved to: /home/adam/Cours/PFE/source/YCSB/ignite/work
+[14:17:58][INFO ][Thread-2] 
+
+>>>    __________  ________________  
+>>>   /  _/ ___/ |/ /  _/_  __/ __/  
+>>>  _/ // (7 7    // /  / / / _/    
+>>> /___/\___/_/|_/___/ /_/ /___/   
+>>> 
+>>> ver. 2.13.0-SNAPSHOT#20211027-sha1:f0e3a64a
+>>> 2021 Copyright(C) Apache Software Foundation
+>>> 
+>>> Ignite documentation: http://ignite.apache.org
+
+[14:17:58][INFO ][Thread-2] Config URL: n/a
+[14:17:58][INFO ][Thread-2] IgniteConfiguration [igniteInstanceName=YCSB client node, pubPoolSize=8, svcPoolSize=8, callbackPoolSize=8, stripedPoolSize=8, sysPoolSize=8, mgmtPoolSize=4, dataStreamerPoolSize=8, utilityCachePoolSize=8, utilityCacheKeepAliveTime=60000, p2pPoolSize=2, qryPoolSize=8, buildIdxPoolSize=2, igniteHome=null, igniteWorkDir=/home/adam/Cours/PFE/source/YCSB/ignite/work, mbeanSrv=com.sun.jmx.mbeanserver.JmxMBeanServer@6e2aa843, nodeId=5636e658-028d-4360-a1a9-5b147eaaf6c7, marsh=BinaryMarshaller [], marshLocJobs=false, daemon=false, p2pEnabled=false, netTimeout=2000, netCompressionLevel=1, sndRetryDelay=1000, sndRetryCnt=3, metricsHistSize=10000, metricsUpdateFreq=2000, metricsExpTime=9223372036854775807, discoSpi=TcpDiscoverySpi [addrRslvr=null, addressFilter=null, sockTimeout=0, ackTimeout=0, marsh=null, reconCnt=10, reconDelay=2000, maxAckTimeout=600000, soLinger=0, forceSrvMode=false, clientReconnectDisabled=false, internalLsnr=null, skipAddrsRandomization=false], segPlc=STOP, segResolveAttempts=2, waitForSegOnStart=true, allResolversPassReq=true, segChkFreq=10000, commSpi=TcpCommunicationSpi [connectGate=org.apache.ignite.spi.communication.tcp.internal.ConnectGateway@16d07f65, ctxInitLatch=java.util.concurrent.CountDownLatch@7885cd76[Count = 1], stopping=false, clientPool=null, nioSrvWrapper=null, stateProvider=null], evtSpi=org.apache.ignite.spi.eventstorage.NoopEventStorageSpi@6d3a7aa9, colSpi=NoopCollisionSpi [], deploySpi=LocalDeploymentSpi [], indexingSpi=org.apache.ignite.spi.indexing.noop.NoopIndexingSpi@be0750d, addrRslvr=null, encryptionSpi=org.apache.ignite.spi.encryption.noop.NoopEncryptionSpi@32f566cb, tracingSpi=org.apache.ignite.spi.tracing.NoopTracingSpi@36ec61fc, clientMode=true, rebalanceThreadPoolSize=2, rebalanceTimeout=10000, rebalanceBatchesPrefetchCnt=3, rebalanceThrottle=0, rebalanceBatchSize=524288, txCfg=TransactionConfiguration [txSerEnabled=false, dfltIsolation=REPEATABLE_READ, dfltConcurrency=PESSIMISTIC, dfltTxTimeout=0, txTimeoutOnPartitionMapExchange=0, deadlockTimeout=10000, pessimisticTxLogSize=0, pessimisticTxLogLinger=10000, tmLookupClsName=null, txManagerFactory=null, useJtaSync=false], cacheSanityCheckEnabled=true, discoStartupDelay=60000, deployMode=SHARED, p2pMissedCacheSize=100, locHost=null, timeSrvPortBase=31100, timeSrvPortRange=100, failureDetectionTimeout=10000, sysWorkerBlockedTimeout=null, clientFailureDetectionTimeout=30000, metricsLogFreq=60000, connectorCfg=ConnectorConfiguration [jettyPath=null, host=null, port=11211, noDelay=true, directBuf=false, sndBufSize=32768, rcvBufSize=32768, idleQryCurTimeout=600000, idleQryCurCheckFreq=60000, sndQueueLimit=0, selectorCnt=4, idleTimeout=7000, sslEnabled=false, sslClientAuth=false, sslCtxFactory=null, sslFactory=null, portRange=100, threadPoolSize=8, msgInterceptor=null], odbcCfg=null, warmupClos=null, atomicCfg=AtomicConfiguration [seqReserveSize=1000, cacheMode=PARTITIONED, backups=1, aff=null, grpName=null], classLdr=null, sslCtxFactory=null, platformCfg=null, binaryCfg=null, memCfg=null, pstCfg=null, dsCfg=null, snapshotPath=snapshots, activeOnStart=true, activeOnStartPropSetFlag=false, autoActivation=true, autoActivationPropSetFlag=false, clusterStateOnStart=null, sqlConnCfg=null, cliConnCfg=ClientConnectorConfiguration [host=null, port=10800, portRange=100, sockSndBufSize=0, sockRcvBufSize=0, tcpNoDelay=true, maxOpenCursorsPerConn=128, threadPoolSize=8, selectorCnt=4, idleTimeout=0, handshakeTimeout=10000, jdbcEnabled=true, odbcEnabled=true, thinCliEnabled=true, sslEnabled=false, useIgniteSslCtxFactory=true, sslClientAuth=false, sslCtxFactory=null, thinCliCfg=ThinClientConfiguration [maxActiveTxPerConn=100, maxActiveComputeTasksPerConn=0]], mvccVacuumThreadCnt=2, mvccVacuumFreq=5000, authEnabled=false, failureHnd=null, commFailureRslvr=null, sqlCfg=SqlConfiguration [longQryWarnTimeout=3000, dfltQryTimeout=0, sqlQryHistSize=1000, validationEnabled=false], asyncContinuationExecutor=null]
+[14:17:58][INFO ][Thread-2] Daemon mode: off
+[14:17:58][INFO ][Thread-2] OS: Linux 5.15.6-arch2-1 amd64
+[14:17:58][INFO ][Thread-2] OS user: adam
+[14:17:58][INFO ][Thread-2] PID: 9009
+[14:17:58][INFO ][Thread-2] Language runtime: Java Platform API Specification ver. 11
+[14:17:58][INFO ][Thread-2] VM information: OpenJDK Runtime Environment 11.0.13+8 Oracle Corporation OpenJDK 64-Bit Server VM 11.0.13+8
+[14:17:58][INFO ][Thread-2] VM total memory: 3.7GB
+[14:17:58][INFO ][Thread-2] Remote Management [restart: off, REST: off, JMX (remote: off)]
+[14:17:58][INFO ][Thread-2] Logger: Log4J2Logger [quiet=false, config=file:/home/adam/Cours/PFE/source/YCSB/ignite/target/ignite-binding-0.18.0-SNAPSHOT.jar!/log4j2.xml]
+[14:17:58][INFO ][Thread-2] IGNITE_HOME=null
+[14:17:58][INFO ][Thread-2] VM arguments: []
+[14:17:58][INFO ][Thread-2] Configured caches [in 'sysMemPlc' dataRegion: ['ignite-sys-cache']]
+[14:17:58][WARN ][Thread-2] Please set system property '-Djava.net.preferIPv4Stack=true' to avoid possible problems in mixed environments.
+[14:17:58][INFO ][Thread-2] Configured plugins:
+[14:17:58][INFO ][Thread-2]   ^-- None
+[14:17:58][INFO ][Thread-2] 
+[14:17:58][INFO ][Thread-2] Configured failure handler: [hnd=StopNodeOrHaltFailureHandler [tryStop=false, timeout=0, super=AbstractFailureHandler [ignoredFailureTypes=UnmodifiableSet [SYSTEM_WORKER_BLOCKED, SYSTEM_CRITICAL_OPERATION_TIMEOUT]]]]
+[14:17:59][WARN ][pub-#21%YCSB client node%] Initial heap size is 236MB (should be no less than 512MB, use -Xms512m -Xmx512m).
+[14:17:59][INFO ][Thread-2] Successfully bound communication NIO server to TCP port [port=47101, locHost=0.0.0.0/0.0.0.0, selectorsCnt=4, selectorSpins=0, pairedConn=false]
+[14:17:59][WARN ][Thread-2] Message queue limit is set to 0 which may lead to potential OOMEs when running cache operations in FULL_ASYNC or PRIMARY_SYNC modes due to message queues growth on sender and receiver sides.
+[14:17:59][INFO ][Thread-2] Collision resolution is disabled (all jobs will be activated upon arrival).
+[14:17:59][INFO ][Thread-2] Security status [authentication=off, sandbox=off, tls/ssl=off]
+[14:18:00][WARN ][Thread-2] Serialization of Java objects in H2 was enabled.
+[14:18:00][INFO ][Thread-2] Client connector processor has started on TCP port 10801
+[14:18:00][INFO ][Thread-2] REST protocols do not start on client node. To start the protocols on client node set '-DIGNITE_REST_START_ON_CLIENT=true' system property.
+[14:18:00][INFO ][Thread-2] Non-loopback local IPs: 10.188.161.74, fe80:0:0:0:de20:604:eb68:7ac4%wlo1
+[14:18:00][INFO ][Thread-2] Enabled local MACs: EC5C68676DCD
+[14:18:00][INFO ][Thread-2] Cluster ID and tag has been read from metastorage: null
+[14:18:00][INFO ][Thread-2] Shutdown policy was updated [oldVal=null, newVal=null]
+[14:18:00][INFO ][Thread-2] Statistics usage state was changed from null to null
+[14:18:00][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Router node: TcpDiscoveryNode [id=510a653a-80aa-435f-8bf0-2f887a2aed2e, consistentId=0:0:0:0:0:0:0:1%lo,10.188.161.74,127.0.0.1:47500, addrs=ArrayList [0:0:0:0:0:0:0:1%lo, 10.188.161.74, 127.0.0.1], sockAddrs=HashSet [/0:0:0:0:0:0:0:1%lo:47500, /127.0.0.1:47500, /10.188.161.74:47500], discPort=47500, order=1, intOrder=1, lastExchangeTime=1639055880872, loc=false, ver=2.13.0#20211027-sha1:f0e3a64a, isClient=false]
+[14:18:00][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Baseline parameter 'baselineAutoAdjustEnabled' was changed from 'null' to 'true'
+[14:18:00][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Baseline parameter 'baselineAutoAdjustTimeout' was changed from 'null' to '0'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'collisionsDumpInterval' was changed from 'null' to '1000'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'longOperationsDumpTimeout' was changed from 'null' to '60000'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'longTransactionTimeDumpSamplesPerSecondLimit' was changed from 'null' to '5'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'longTransactionTimeDumpThreshold' was changed from 'null' to '0'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] SQL parameter 'sql.defaultQueryTimeout' was changed from 'null' to '0'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] SQL parameter 'sql.disabledFunctions' was changed from 'null' to '[FILE_WRITE, CANCEL_SESSION, MEMORY_USED, CSVREAD, LINK_SCHEMA, MEMORY_FREE, FILE_READ, CSVWRITE, SESSION_ID, LOCK_MODE]'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'transactionTimeDumpSamplesCoefficient' was changed from 'null' to '0.0'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] Transactions parameter 'txOwnerDumpRequestsAllowed' was changed from 'null' to 'true'
+[14:18:01][INFO ][tcp-client-disco-msg-worker-#4%YCSB client node%-#42%YCSB client node%] zealous_banach
+[14:18:01][INFO ][disco-notifier-worker-#39%YCSB client node%] Received activate cluster request with BaselineTopology[id=0] initiator node ID: 5636e658-028d-4360-a1a9-5b147eaaf6c7
+[14:18:01][WARN ][disco-notifier-worker-#39%YCSB client node%] Received state finish message with unexpected ID: ChangeGlobalStateFinishMessage [id=d5de75f9d71-241f36aa-0adc-46d7-a963-e276965cc395, reqId=5636e658-028d-4360-a1a9-5b147eaaf6c7, state=ACTIVE, transitionRes=true]
+[14:18:01][INFO ][disco-notifier-worker-#39%YCSB client node%] Assigned mvcc coordinator [crd=MvccCoordinator [topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], nodeId=510a653a-80aa-435f-8bf0-2f887a2aed2e, ver=1639055817495, local=false, initialized=false]]
+[14:18:01][INFO ][sys-#44%YCSB client node%] Writing cluster ID and tag to metastorage on ready for write ClusterIdAndTag [id=97da0beb-1e7d-46c3-bcf8-12641bff4042, tag=zealous_banach]
+[14:18:01][WARN ][Thread-2] Nodes started on local machine require more than 80% of physical RAM what can lead to significant slowdown due to swapping (please decrease JVM heap size, data region size or checkpoint buffer size) [required=17848MB, available=15012MB]
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] Started exchange init [topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], crd=false, evt=NODE_JOINED, evtNode=5636e658-028d-4360-a1a9-5b147eaaf6c7, customEvt=null, allowMerge=true, exchangeFreeSwitch=false]
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] Components activation performed in 0 ms.
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] Started cache [name=ignite-sys-cache, id=-2100569601, dataRegionName=sysMemPlc, mode=REPLICATED, atomicity=TRANSACTIONAL, backups=2147483647, mvcc=false]
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] Starting caches on local join performed in 172 ms.
+[14:18:01][INFO ][grid-nio-worker-tcp-comm-0-#23%TcpCommunicationSpi%] Established outgoing communication connection [locAddr=/0:0:0:0:0:0:0:1:60156, rmtAddr=/0:0:0:0:0:0:0:1%lo:47100]
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] Finished exchange init [topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], crd=false]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Received full message, will finish exchange [node=510a653a-80aa-435f-8bf0-2f887a2aed2e, resVer=AffinityTopologyVersion [topVer=2, minorTopVer=0]]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Finish exchange future [startVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], resVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], err=null, rebalanced=true, wasRebalanced=false]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Finish proxy initialization, cacheName=ignite-sys-cache, localNodeId=5636e658-028d-4360-a1a9-5b147eaaf6c7
+[14:18:01][INFO ][exchange-worker-#46%YCSB client node%] AffinityTopologyVersion [topVer=2, minorTopVer=0], evt=NODE_JOINED, evtNode=5636e658-028d-4360-a1a9-5b147eaaf6c7, client=true]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Completed partition exchange [localNode=5636e658-028d-4360-a1a9-5b147eaaf6c7, exchange=GridDhtPartitionsExchangeFuture [topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], evt=NODE_JOINED, evtNode=TcpDiscoveryNode [id=5636e658-028d-4360-a1a9-5b147eaaf6c7, consistentId=5636e658-028d-4360-a1a9-5b147eaaf6c7, addrs=ArrayList [0:0:0:0:0:0:0:1%lo, 10.188.161.74, 127.0.0.1], sockAddrs=HashSet [/0:0:0:0:0:0:0:1%lo:0, /127.0.0.1:0, /10.188.161.74:0], discPort=0, order=2, intOrder=0, lastExchangeTime=1639055880619, loc=true, ver=2.13.0#20211027-sha1:f0e3a64a, isClient=true], rebalanced=true, done=true, newCrdFut=null], topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0]]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Exchange timings [startVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], resVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], stage="Waiting in exchange queue" (228 ms), stage="Exchange parameters initialization" (22 ms), stage="Components activation" (2 ms), stage="Determine exchange type" (186 ms), stage="Waiting for Full message" (171 ms), stage="Affinity recalculation" (23 ms), stage="Full map updating" (22 ms), stage="Exchange done" (57 ms), stage="Total time" (711 ms)]
+[14:18:01][INFO ][sys-#50%YCSB client node%] Exchange longest local stages [startVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], resVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], stage="Affinity initialization (local join) [grp=usertable]" (23 ms) (parent=Affinity recalculation), stage="Affinity initialization (local join) [grp=ignite-sys-cache]" (15 ms) (parent=Affinity recalculation)]
+[14:18:01][INFO ][Thread-2] Performance suggestions for grid 'YCSB client node' (fix if possible)
+[14:18:01][INFO ][Thread-2] To disable, set -DIGNITE_PERFORMANCE_SUGGESTIONS_DISABLED=true
+[14:18:01][INFO ][Thread-2]   ^-- Switch to the most recent 1.8 JVM version
+[14:18:01][INFO ][Thread-2]   ^-- Specify JVM heap max size (add '-Xmx<size>[g|G|m|M|k|K]' to JVM options)
+[14:18:01][INFO ][Thread-2]   ^-- Set max direct memory size if getting 'OOME: Direct buffer memory' (add '-XX:MaxDirectMemorySize=<size>[g|G|m|M|k|K]' to JVM options)
+[14:18:01][INFO ][Thread-2]   ^-- Speed up flushing of dirty pages by OS (alter vm.dirty_writeback_centisecs and vm.dirty_expire_centisecs parameters by setting to 500)
+[14:18:01][INFO ][Thread-2]   ^-- Reduce pages swapping ratio (set vm.swappiness=10 or less)
+[14:18:01][INFO ][Thread-2] Refer to this page for more performance suggestions: https://ignite.apache.org/docs/latest/perf-and-troubleshooting/memory-tuning
+[14:18:01][INFO ][Thread-2] 
+[14:18:01][INFO ][Thread-2] To start Console Management & Monitoring run ignitevisorcmd.{sh|bat}
+[14:18:01][INFO ][Thread-2] Classpath value: /home/adam/Cours/PFE/source/YCSB/ignite/conf:/home/adam/Cours/PFE/source/YCSB/ignite/target/ignite-binding-0.18.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/htrace/htrace-core4/4.1.0-incubating/htrace-core4-4.1.0-incubating.jar:/home/adam/.m2/repository/org/gridgain/ignite-shmem/1.0.0/ignite-shmem-1.0.0.jar:/home/adam/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-core/7.4.0/lucene-core-7.4.0.jar:/home/adam/.m2/repository/org/hdrhistogram/HdrHistogram/2.1.4/HdrHistogram-2.1.4.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-indexing/2.13.0-SNAPSHOT/ignite-indexing-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-queryparser/7.4.0/lucene-queryparser-7.4.0.jar:/home/adam/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/adam/.m2/repository/org/jetbrains/annotations/16.0.3/annotations-16.0.3.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-analyzers-common/7.4.0/lucene-analyzers-common-7.4.0.jar:/home/adam/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4/jackson-core-asl-1.9.4.jar:/home/adam/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/home/adam/Cours/PFE/source/YCSB/core/target/core-0.18.0-SNAPSHOT.jar:/home/adam/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-log4j2/2.13.0-SNAPSHOT/ignite-log4j2-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar:/home/adam/.m2/repository/org/apache/ignite/ignite-core/2.13.0-SNAPSHOT/ignite-core-2.13.0-SNAPSHOT.jar:/home/adam/.m2/repository/com/h2database/h2/1.4.197/h2-1.4.197.jar:/home/adam/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4/jackson-mapper-asl-1.9.4.jar:/home/adam/.m2/repository/javax/cache/cache-api/1.0.0/cache-api-1.0.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-queries/7.4.0/lucene-queries-7.4.0.jar:/home/adam/.m2/repository/org/apache/lucene/lucene-sandbox/7.4.0/lucene-sandbox-7.4.0.jar
+[14:18:01][INFO ][Thread-2] List of files containing in classpath: /home/adam/Cours/PFE/source/YCSB/ignite/target/ignite-binding-0.18.0-SNAPSHOT.jar;/home/adam/.m2/repository/org/apache/htrace/htrace-core4/4.1.0-incubating/htrace-core4-4.1.0-incubating.jar;/home/adam/.m2/repository/org/gridgain/ignite-shmem/1.0.0/ignite-shmem-1.0.0.jar;/home/adam/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar;/home/adam/.m2/repository/org/apache/lucene/lucene-core/7.4.0/lucene-core-7.4.0.jar;/home/adam/.m2/repository/org/hdrhistogram/HdrHistogram/2.1.4/HdrHistogram-2.1.4.jar;/home/adam/.m2/repository/org/apache/ignite/ignite-indexing/2.13.0-SNAPSHOT/ignite-indexing-2.13.0-SNAPSHOT.jar;/home/adam/.m2/repository/org/apache/lucene/lucene-queryparser/7.4.0/lucene-queryparser-7.4.0.jar;/home/adam/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar;/home/adam/.m2/repository/org/jetbrains/annotations/16.0.3/annotations-16.0.3.jar;/home/adam/.m2/repository/org/apache/lucene/lucene-analyzers-common/7.4.0/lucene-analyzers-common-7.4.0.jar;/home/adam/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4/jackson-core-asl-1.9.4.jar;/home/adam/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar;/home/adam/Cours/PFE/source/YCSB/core/target/core-0.18.0-SNAPSHOT.jar;/home/adam/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar;/home/adam/.m2/repository/org/apache/ignite/ignite-log4j2/2.13.0-SNAPSHOT/ignite-log4j2-2.13.0-SNAPSHOT.jar;/home/adam/.m2/repository/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar;/home/adam/.m2/repository/org/apache/ignite/ignite-core/2.13.0-SNAPSHOT/ignite-core-2.13.0-SNAPSHOT.jar;/home/adam/.m2/repository/com/h2database/h2/1.4.197/h2-1.4.197.jar;/home/adam/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4/jackson-mapper-asl-1.9.4.jar;/home/adam/.m2/repository/javax/cache/cache-api/1.0.0/cache-api-1.0.0.jar;/home/adam/.m2/repository/org/apache/lucene/lucene-queries/7.4.0/lucene-queries-7.4.0.jar;/home/adam/.m2/repository/org/apache/lucene/lucene-sandbox/7.4.0/lucene-sandbox-7.4.0.jar;
+[14:18:01][INFO ][Thread-2] 
+
+>>> +--------------------------------------------------------------------------------+
+>>> Ignite ver. 2.13.0-SNAPSHOT#20211027-sha1:f0e3a64afb5e93a36eb8fc5283e66daa250b6209
+>>> +--------------------------------------------------------------------------------+
+>>> OS name: Linux 5.15.6-arch2-1 amd64
+>>> CPU(s): 8
+>>> Heap: 3.7GB
+>>> VM name: 9009@archie
+>>> Ignite instance name: YCSB client node
+>>> Local node [ID=5636E658-028D-4360-A1A9-5B147EAAF6C7, order=2, clientMode=true]
+>>> Local node addresses: [10.188.161.74/0:0:0:0:0:0:0:1%lo, /10.188.161.74, /127.0.0.1]
+>>> Local ports: TCP:10801 TCP:47101 
+
+[14:18:01][INFO ][Thread-2] Topology snapshot [ver=2, locNode=5636e658, servers=1, clients=1, state=ACTIVE, CPUs=8, offheap=10.0GB, heap=7.3GB, aliveNodes=[TcpDiscoveryNode [id=5636e658-028d-4360-a1a9-5b147eaaf6c7, consistentId=5636e658-028d-4360-a1a9-5b147eaaf6c7, isClient=true, ver=2.13.0#20211027-sha1:f0e3a64a], TcpDiscoveryNode [id=510a653a-80aa-435f-8bf0-2f887a2aed2e, consistentId=0:0:0:0:0:0:0:1%lo,10.188.161.74,127.0.0.1:47500, isClient=false, ver=2.13.0#20211027-sha1:f0e3a64a]]]
+[14:18:01][INFO ][Thread-2]   ^-- Baseline [id=0, size=1, online=1, offline=0]
+[14:18:01][INFO ][Thread-2] Node started : [stage="Configure system pool" (39 ms),stage="Start managers" (1044 ms),stage="Configure binary metadata" (94 ms),stage="Start processors" (839 ms),stage="Init metastore" (42 ms),stage="Finish recovery" (0 ms),stage="Join topology" (470 ms),stage="Await transition" (32 ms),stage="Await exchange" (788 ms),stage="Total time" (3348 ms)]
+[14:18:01][INFO ][Thread-2] Activate Ignite cluster.
+[14:18:01][INFO ][Thread-2] Sending activate cluster request from node [id=5636e658-028d-4360-a1a9-5b147eaaf6c7, topVer=AffinityTopologyVersion [topVer=2, minorTopVer=0], client=true, daemon=false]
+[14:18:02][INFO ][exchange-worker-#46%YCSB client node%] Started cache [name=usertable, id=358348515, dataRegionName=null, mode=PARTITIONED, atomicity=ATOMIC, backups=1, mvcc=false]
+[14:18:02][INFO ][exchange-worker-#46%YCSB client node%] Finish proxy initialization, cacheName=usertable, localNodeId=5636e658-028d-4360-a1a9-5b147eaaf6c7
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2021-12-09 14:18:08:219 10 sec: 28991 operations; 2898.81 current ops/sec; est completion in 25 seconds [INSERT: Count=29008, Max=115263, Min=200, Avg=1649.64, 90=3413, 99=9679, 99.9=26575, 99.99=114879] 
+[14:18:11][INFO ][Thread-4] Stopped cache [cacheName=ignite-sys-cache]
+[14:18:11][INFO ][Thread-4] Stopped cache [cacheName=usertable]
+[14:18:11][WARN ][grid-nio-worker-tcp-comm-0-#23%TcpCommunicationSpi%] Failed to shutdown socket
+java.nio.channels.ClosedChannelException: null
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:160) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.shutdownOutput(SocketChannelImpl.java:930) ~[?:?]
+	at sun.nio.ch.SocketAdaptor.shutdownOutput(SocketAdaptor.java:406) ~[?:?]
+	at org.apache.ignite.internal.util.IgniteUtils.close(IgniteUtils.java:4247) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.closeKey(GridNioServer.java:2784) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.close(GridNioServer.java:2835) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.close(GridNioServer.java:2794) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$DirectNioClientWorker.processRead(GridNioServer.java:1357) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.processSelectedKeysOptimized(GridNioServer.java:2508) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.bodyInternal(GridNioServer.java:2273) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.nio.GridNioServer$AbstractNioClientWorker.body(GridNioServer.java:1910) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at org.apache.ignite.internal.util.worker.GridWorker.run(GridWorker.java:125) [ignite-core-2.13.0-SNAPSHOT.jar:2.13.0-SNAPSHOT]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
+[14:18:11][INFO ][Thread-4] 
+
+>>> +-------------------------------------------------------------------------------------------+
+>>> Ignite ver. 2.13.0-SNAPSHOT#20211027-sha1:f0e3a64afb5e93a36eb8fc5283e66daa250b6209 stopped OK
+>>> +-------------------------------------------------------------------------------------------+
+>>> Ignite instance name: YCSB client node
+>>> Grid uptime: 00:00:10.054
+
+
+2021-12-09 14:18:11:918 13 sec: 100000 operations; 19196.81 current ops/sec; [CLEANUP: Count=8, Max=103167, Min=4, Avg=12899.75, 90=19, 99=103167, 99.9=103167, 99.99=103167] [INSERT: Count=70992, Max=13815, Min=183, Avg=396.31, 90=484, 99=748, 99.9=7675, 99.99=10639] 
+[OVERALL], RunTime(ms), 13700
+[OVERALL], Throughput(ops/sec), 7299.270072992701
+[TOTAL_GCS_G1_Young_Generation], Count, 11
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 123
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.8978102189781022
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 11
+[TOTAL_GC_TIME], Time(ms), 123
+[TOTAL_GC_TIME_%], Time(%), 0.8978102189781022
+[CLEANUP], Operations, 8
+[CLEANUP], AverageLatency(us), 12899.75
+[CLEANUP], MinLatency(us), 4
+[CLEANUP], MaxLatency(us), 103167
+[CLEANUP], 95thPercentileLatency(us), 103167
+[CLEANUP], 99thPercentileLatency(us), 103167
+[INSERT], Operations, 100000
+[INSERT], AverageLatency(us), 759.87391
+[INSERT], MinLatency(us), 183
+[INSERT], MaxLatency(us), 115263
+[INSERT], 95thPercentileLatency(us), 2769
+[INSERT], 99thPercentileLatency(us), 6403
+[INSERT], Return=OK, 100000
