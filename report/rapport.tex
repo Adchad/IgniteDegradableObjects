@@ -1,0 +1,57 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Degradable concurrent and distributed data structures}
+
+\author{\IEEEauthorblockN{Adam CHADER}
+\IEEEauthorblockA{\textit{PDS track, Master of Computer Science} \\
+\textit{Institut Polytechnique de Paris}\\
+Palaiseau, France \\
+adam.chader@telecom-paris.fr}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+This document is a model and instructions for \LaTeX.
+This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+or Math in Paper Title or Abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Concurrent programming, parallel programming, performance, databases
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+\subsection{Context}
+Up until the begnining of the 21\textsuperscript{st} Century, there was a simple rule that could be used to predict the performances of computers. This is known as Moore's Law. This law states that every two year, the number of transistors would double on chips. This rule could be used quite flawlessly to predict the speed of processors, as there is a direct correlation between the speed of sequential programs and the frequency of CPUs. However, in recent years, serveral issues have surfaced regarding these assumptions : Firstly, we seem to have reached the minimum physical size of a transistor at around 5 nanometer ; secondly, the frequency that can be reached by craming all these transistors in a single CPU core is too high to be dissipated by current means \cite{moore}. 
+
+\begin{thebibliography}{00}
+\bibitem{scalable} \href{https://dl.acm.org/doi/10.1145/2699681}{Austin T. Clements, M. Frans Kaashoek, Nickolai Zeldovich, Robert T. Morris, and Eddie Kohler. 2015. The scalable commutativity rule: Designing scalable software for multicore processors. ACM Trans. Comput. Syst. 32, 4, Article 10 (January 2015), 47 pages.}
+\bibitem{ignite} \href{https://ignite.apache.org/docs/latest/}{Apache Ignite}
+\bibitem{gcpcompute} \href{https://cloud.google.com/compute/docs}{Google Cloud Platform Compute Engine}
+\bibitem{moore} \href{https://ieeexplore.ieee.org/document/591665}{R. R. Schaller, "Moore's law: past, present and future," in IEEE Spectrum, vol. 34, no. 6, pp. 52-59, June 1997, doi: 10.1109/6.591665.}
+
+\end{thebibliography}
+
+\vspace{12pt}
+\end{document}
