@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  11 JAN 2022 17:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  12 JAN 2022 15:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,20 +504,24 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<moore.png, id=37, 3144.74875pt x 2326.6925pt>
+<moore.png, id=49, 3144.74875pt x 2326.6925pt>
 File: moore.png Graphic file (type png)
 <use moore.png>
 Package pdftex.def Info: moore.png  used on input line 45.
-(pdftex.def)             Requested size: 142.26378pt x 105.22917pt.
-<amdahl.png, id=38, 691.58376pt x 550.055pt>
+(pdftex.def)             Requested size: 199.16928pt x 147.33505pt.
+<amdahl.png, id=50, 518.93875pt x 328.22626pt>
 File: amdahl.png Graphic file (type png)
 <use amdahl.png>
 Package pdftex.def Info: amdahl.png  used on input line 51.
-(pdftex.def)             Requested size: 142.26378pt x 113.14809pt.
+(pdftex.def)             Requested size: 199.16928pt x 125.97433pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./moore.png (PNG copy)> <./amdahl.png>]
+Underfull \hbox (badness 1655) in paragraph at lines 78--79
+[]\OT1/ptm/m/n/10 We next will de-tail the in-for-ma-tion we gath-ered by
+ []
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -533,24 +537,25 @@ Before submitting the final camera ready copy, remember to:
 
 ] (./rapport.aux)
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 4D4A3FC0375E17E586F71BF95A959D18;1038.
+(rerunfilecheck)             Checksum: 97428B882D2D1DB4EF6BDF9A62D0C6F0;1330.
  ) 
 Here is how much of TeX's memory you used:
- 12232 strings out of 478353
- 195600 string characters out of 5854636
+ 12238 strings out of 478353
+ 195690 string characters out of 5854636
  508883 words of memory out of 5000000
- 30201 multiletter control sequences out of 15000+600000
+ 30204 multiletter control sequences out of 15000+600000
  435574 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,8n,63p,2388b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,63p,2383b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
-ts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb
-i8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/tex
-mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (2 pages, 622219 bytes).
+ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
+mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
+hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on rapport.pdf (2 pages, 635159 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 67 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 115 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

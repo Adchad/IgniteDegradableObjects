@@ -1,0 +1,40 @@
+1 thread :
+Nombre d'executions de poll : 222982998
+Temps total dans poll : 6728337256
+Throughput : 5426.819341184132
+
+2 threads :
+Nombre d'executions de poll : 246749706
+Temps total dans poll : 6565395936
+Throughput : 7013.606396409034
+
+3 threads :
+Nombre d'executions de poll : 204007392
+Temps total dans poll : 6483242378
+Throughput : 7344.300822561692
+
+4 threads :
+Nombre d'executions de poll : 250990900
+Temps totaldans poll : 6145739996
+Throughput : 7937.137868084768
+
+5 threads :
+Nombre d'executions de poll : 277155338
+Temps total dans poll : 5939872517
+Throughput : 8014.104824491104
+
+6 threads :
+Nombre d'executions de poll : 187854312
+Temps total dans poll : 5785915749
+Throughput : 8625.894936599672
+
+7 threads :
+Nombre d'executions de poll : 173572461
+Temps total dans poll : 5578853001
+Throughput : 8788.890841975743
+
+8 threads :
+Nombre d'executions de poll : 247186214
+Temps total dans poll : 6127623918
+Throughput : 8718.395815170008
+
