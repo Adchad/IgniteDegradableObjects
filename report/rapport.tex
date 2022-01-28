@@ -90,6 +90,11 @@ And finally, we shall compare this to related work.
 The goal of this project is to improve the performances of Apache Ignite, by inserting existing degraded data structures in the place of traditional data structures. We wil therefore first explain to what extent the implementation of data structures is linked with performance of parallel applications. We shall then explain the principle behind the degrading of objects, and we will finally explain how we can find the places where it makes sense to apply this degradation.
 
 \subsection{Contention and Scalability in data structures}
+The relationship between the implementation of data structures and the performances of parallel applications is not immediate.
+
+To achieve the best performance possible with parallel software, we need for it to scale. Meaning that increasing the number of parallel workers will increase the speed of the computation propotionally. As we have seen with Amdahl's Law, to do this, we need to have as little sequential code as possible in our program. One big source of sequentialness in software is contention is data access. Indeed, when two process try to access and modify the same data point at the same time, the result is non deterministic, which is really bad. To prevent this, safety measures are put in place to prevent concurrent accesses to the same piece of data. Often times, this results in the fact that only one process at a time can access the data, which is the definition of sequentialness.
+
+We can therefore conclude that the goal of the designer of data structures is to prevent contention on the same data points as much as possible
 
 \subsection{What are Degradable Data Structures ?}
 
