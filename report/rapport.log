@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  12 JAN 2022 15:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  28 JAN 2022 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,21 +504,46 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<moore.png, id=49, 3144.74875pt x 2326.6925pt>
+<moore.png, id=53, 3144.74875pt x 2326.6925pt>
 File: moore.png Graphic file (type png)
 <use moore.png>
 Package pdftex.def Info: moore.png  used on input line 45.
 (pdftex.def)             Requested size: 199.16928pt x 147.33505pt.
-<amdahl.png, id=50, 518.93875pt x 328.22626pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--54
+[]\OT1/ptm/m/n/10 if(!listPollTime.contains(pollTime.get()))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--54
+\OT1/ptm/m/n/10 list-Poll-Time.add(pollTime.get()); list-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--54
+\OT1/ptm/m/n/10 Poll-Counter.add(pollCounter.get());
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--54
+\OT1/ptm/m/n/10 if(!listPollTime.contains(pollTime.get()))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--54
+\OT1/ptm/m/n/10 list-Poll-Time.add(pollTime.get()); list-Poll-
+ []
+
+<amdahl.png, id=54, 518.93875pt x 328.22626pt>
 File: amdahl.png Graphic file (type png)
 <use amdahl.png>
-Package pdftex.def Info: amdahl.png  used on input line 51.
+Package pdftex.def Info: amdahl.png  used on input line 57.
 (pdftex.def)             Requested size: 199.16928pt x 125.97433pt.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./moore.png (PNG copy)> <./amdahl.png>]
-Underfull \hbox (badness 1655) in paragraph at lines 78--79
+Underfull \hbox (badness 1655) in paragraph at lines 82--83
 []\OT1/ptm/m/n/10 We next will de-tail the in-for-ma-tion we gath-ered by
  []
 
@@ -533,17 +558,15 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
-
-] (./rapport.aux)
+[2] (./rapport.aux)
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 97428B882D2D1DB4EF6BDF9A62D0C6F0;1330.
+(rerunfilecheck)             Checksum: D3ADA98CE2341420728AAC001F39BF01;1560.
  ) 
 Here is how much of TeX's memory you used:
- 12238 strings out of 478353
- 195690 string characters out of 5854636
- 508883 words of memory out of 5000000
- 30204 multiletter control sequences out of 15000+600000
+ 12240 strings out of 478353
+ 195720 string characters out of 5854636
+ 508886 words of memory out of 5000000
+ 30205 multiletter control sequences out of 15000+600000
  435574 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,63p,2383b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -552,10 +575,10 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
 hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (2 pages, 635159 bytes).
+Output written on rapport.pdf (2 pages, 635633 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 120 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 99 words of extra memory for PDF output out of 10000 (max. 10000000)
 
