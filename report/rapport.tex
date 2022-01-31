@@ -39,18 +39,11 @@ Concurrent programming, parallel programming, performance, databases
 This paper is the report of a research project realised for the Parallel And Distributed Systems master at \textit{Institut Polytechnique de Paris}. It describes the work that I realised to apply degradable data structures to Apache Ignite \cite{ignite}, a distributed data store, to improve its performance and scalability.
 
 \subsection{Context}
-Up until the begnining of the 21\textsuperscript{st} Century, there was a simple rule that could be used to predict the performances of computers. This is known as Moore's Law (Fig.~\ref{moore}). This law states that every two year, the number of transistors would double on chips. This rule could be used quite flawlessly to predict the speed of software, as there is a direct correlation between the speed of sequential programs and the frequency of CPUs. However, in recent years, several issues have surfaced regarding these assumptions : Firstly, we seem to have reached the minimum physical size of a transistor at around 5 nanometer ; secondly, the frequency that can be reached by craming all these transistors in a single CPU core is too high to be dissipated by current means \cite{moore}. As of today, it is extremely complicated and costly to significantly increase the clock speed of a single core. The solution that was found is to put multiple CPU cores in a single machine. The total number of clock cycle per second should continue increasing, while the heat would remain manageable. Intuitively, this solution is perfect : by having two cores instead of one, we could double the total frequency of the CPU, and thus double the speed of software. This is what we call \textit{linear scalability}, and it is still just a dream. There are many reason as to why it is impossible to achieve linear scalability, but they all boil down to the same issue : in order to make the most out of several CPU cores, we need to have them working at the same time. It is possible when the tasks are perfectly parallelisable, but this almost never happens when we want the cores working together. Programs need to access variables in memory, and accessing them in parallel can cause conflicts (we will explain these conflicts in detail later), they also need to aces IO which can cause an issue. The resulting effect of these issues is that parallel programs often contain sequential portions, where each core has to wait for one core to finish a task. The more sequential portions a parallel program contains, the slower the speedup is. This is described by Amdahl's Law \cite{amdahl} (Fig.~\ref{amdahl}). It describes the speedup of parallelisation as a function of the amount of sequential code.
+Up until the begnining of the 21\textsuperscript{st} Century, there had existed a simple rule that could be used to predict the performances of computers. This is known as Moore's Law (Fig.~\ref{moore}). This law states that every two year, the number of transistors would double on chips. This rule could be used quite flawlessly to predict the speed of software, as there is a direct correlation between the speed of sequential programs and the frequency of CPUs. However, in recent years, several issues have surfaced regarding these assumptions : Firstly, we seem to have reached the minimum physical size of a transistor at around 5 nanometer ; secondly, the frequency that can be reached by craming all these transistors in a single CPU core is too high to be dissipated by current means \cite{moore}. As of today, it is extremely complicated and costly to significantly increase the clock speed of a single core. The solution that was found is to put multiple CPU cores in a single machine. The total number of clock cycle per second should continue increasing, while the heat would remain manageable. Intuitively, this solution is perfect : by having two cores instead of one, we could double the total frequency of the CPU, and thus double the speed of software. This is what we call \textit{linear scalability}, and it is still just a dream. There are many reason as to why it is impossible to achieve linear scalability, but they all boil down to the same issue : in order to make the most out of several CPU cores, we need to have them working at the same time. It is possible when the tasks are perfectly parallelisable, but this almost never happens when we want the cores working together. Programs need to access variables in memory, and accessing them in parallel can cause conflicts (we will explain these conflicts in detail later), they also need to aces IO which can cause an issue. The resulting effect of these issues is that parallel programs often contain sequential portions, where each core has to wait for one core to finish a task. The more sequential portions a parallel program contains, the slower the speedup is. This is described by Amdahl's Law \cite{amdahl} (Fig.~\ref{amdahl}). It describes the speedup of parallelisation as a function of the amount of sequential code.
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=70mm]{moore.png}}
-\caption{Moore's Law.}if(!listPollTime.contains(pollTime.get())){
-                listPollTime.add(pollTime.get());
-                listPollCounter.add(pollCounter.get());
-            }if(!listPollTime.contains(pollTime.get())){
-                listPollTime.add(pollTime.get());
-                listPollCounter.add(pollCounter.get());
-            }
-\label{moore}
+\caption{Moore's Law.}\label{moore}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -64,7 +57,7 @@ Historically, it was the responsibility of the end programmer to parallelise the
 
 
 \subsection{Work}
-This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweeking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The goal of this project is to apply these data structures to a specific use case being the data store Apache Ignite \cite{ignite}, and observe the evolution of performances.
+This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweeking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The idea is to take real industrial code, and change some of the objects used for degraded ones whithout having to change any of the code, and observe the increase in performance. The goal of this specific project is to apply these data structures to a specific use case being the data store Apache Ignite \cite{ignite}, and observe the evolution of performances.
 
 \subsection{Contributions}
 This project made the following contributions to Apache Ignite:
@@ -83,8 +76,12 @@ We next will detail the information we gathered by analysing Apache Ignite.
 
 we will then show the result obtained.
 
-And finally, we shall compare this to related work. 
 
+\section{Related Work}
+\subsection{The Scalable Commutativity rule}
+The approach of Austin Clements \cite{scalable} team is very similar to the work being done here. They present a new way of designing scalable and performant software, by thinking on the interface rather than on the implementation. They present the \textit{Scalable Commutativity Rule} that states that \textit{whenever interface operations commute, they can be implemented in a way that scales}. To describe this commutativity they provide a new definition calles \textit{SIM-Commutativity} for more complex interfaces. The idea is then to modify the interfaces so that the operations are commutative. This relates very much to the idea of degraded data structures, as they are an extension of this work : rather than saying that the interface needs to be modified, the idea with degradation is to remove some constraints of the previous interface, so that it scales. It could use commutativity or some other form of contraint on the interface.
+
+In the scalable commutativity rule, they work on the interface of the linux kernel, whereas this work is more geared towards data stores and their data structures.
 
 \section{Degradable Data Structures}
 The goal of this project is to improve the performances of Apache Ignite, by inserting existing degraded data structures in the place of traditional data structures. We wil therefore first explain to what extent the implementation of data structures is linked with performance of parallel applications. We shall then explain the principle behind the degrading of objects, and we will finally explain how we can find the places where it makes sense to apply this degradation.
@@ -92,11 +89,12 @@ The goal of this project is to improve the performances of Apache Ignite, by ins
 \subsection{Contention and Scalability in data structures}
 The relationship between the implementation of data structures and the performances of parallel applications is not immediate.
 
-To achieve the best performance possible with parallel software, we need for it to scale. Meaning that increasing the number of parallel workers will increase the speed of the computation propotionally. As we have seen with Amdahl's Law, to do this, we need to have as little sequential code as possible in our program. One big source of sequentialness in software is contention is data access. Indeed, when two process try to access and modify the same data point at the same time, the result is non deterministic, which is really bad. To prevent this, safety measures are put in place to prevent concurrent accesses to the same piece of data. Often times, this results in the fact that only one process at a time can access the data, which is the definition of sequentialness.
+To achieve the best performance possible with parallel software, we need for it to scale. Meaning that increasing the number of parallel workers will increase the speed of the computation propotionally. As we have seen with Amdahl's Law, to do this, we need to have as little sequential code as possible in our program. One big source of sequentialness in software is contention is data access. Indeed, when two process try to access and modify the same data point at the same time, the result is non deterministic, which is really bad. To prevent this, safety measures are put in place to prevent concurrent accesses to the same piece of data. Often times, this results in the fact that only one process at a time can access the data, which we will call a \textbf{bottleneck}.
 
-We can therefore conclude that the goal of the designer of data structures is to prevent contention on the same data points as much as possible
+We can therefore conclude that the goal of the designer of data structures is to prevent bottlenecks by avoiding contention on the same data points as much as possible
 
 \subsection{What are Degradable Data Structures ?}
+
 
 \subsection{How do we find where to apply degradation ?}
 
@@ -105,7 +103,6 @@ We can therefore conclude that the goal of the designer of data structures is to
 
 \section{Performance Evaluation}
 
-\section{Related Work}
 
 
 \begin{thebibliography}{00}
