@@ -57,24 +57,32 @@ Historically, it was the responsibility of the end programmer to parallelise the
 
 
 \subsection{Work}
-This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweeking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The idea is to take real industrial code, and change some of the objects used for degraded ones whithout having to change any of the code, and observe the increase in performance. The goal of this specific project is to apply these data structures to a specific use case being the data store Apache Ignite \cite{ignite}, and observe the evolution of performances.
+This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweeking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The idea is to take real industrial code, and change some of the objects used for degraded ones whithout having to change any of the code, and observe the increase in performance.
+
+\subsection{Scope of this project}
+The work being done here is the applications of these degraded data structures to a data store : Apache Ignite \cite{ignite}. We first need to locate situations in the source of the data store where it is judicious to apply degradation. This is done by benchmarking the application, and pinpointing the source of eventual bottlenecks, then figuring out whether or not degradation is possible.
 
 \subsection{Contributions}
 This project made the following contributions to Apache Ignite:
 \begin{itemize}
   \item Benchmarking
   \item Perfomance Analysis
-  \item Analysis of the source to find possible applications of degradable objects
+  \item Identification of bottlenecks
+  \item Method for fiding the probable causes of bottlenecks
 \end{itemize}
 
 \subsection{Outline}
 The rest of this paper details to context and the contributions of the project.
 
-We will first explain the theory behind degradable objects and how we can find places to apply them.
+We shall start by examinating the related works and how they compare to the work being done here.
+
+We will then explain the theory behind degradable objects and how we can find places to apply them.
 
 We next will detail the information we gathered by analysing Apache Ignite.
 
 we will then show the result obtained.
+
+We will finally discuss the conclusions we can take from the work.
 
 
 \section{Related Work}
@@ -86,15 +94,19 @@ In the scalable commutativity rule, they work on the interface of the linux kern
 \section{Degradable Data Structures}
 The goal of this project is to improve the performances of Apache Ignite, by inserting existing degraded data structures in the place of traditional data structures. We wil therefore first explain to what extent the implementation of data structures is linked with performance of parallel applications. We shall then explain the principle behind the degrading of objects, and we will finally explain how we can find the places where it makes sense to apply this degradation.
 
-\subsection{Contention and Scalability in data structures}
+\subsection{Contention and Scalability} 
 The relationship between the implementation of data structures and the performances of parallel applications is not immediate.
 
-To achieve the best performance possible with parallel software, we need for it to scale. Meaning that increasing the number of parallel workers will increase the speed of the computation propotionally. As we have seen with Amdahl's Law, to do this, we need to have as little sequential code as possible in our program. One big source of sequentialness in software is contention is data access. Indeed, when two process try to access and modify the same data point at the same time, the result is non deterministic, which is really bad. To prevent this, safety measures are put in place to prevent concurrent accesses to the same piece of data. Often times, this results in the fact that only one process at a time can access the data, which we will call a \textbf{bottleneck}.
+To achieve the best performance possible with parallel software, we need for it to scale. Meaning that increasing the number of parallel workers will increase the speed of the computation propotionally. As we have seen with Amdahl's Law, to do this, we need to have as little sequential code as possible in our program. One big source of sequentialness in software is contention in data accesses. Indeed, when two process try to access and modify the same data point at the same time, the result is non deterministic, which is really bad. To prevent this, safety measures are put in place to prevent concurrent accesses to the same piece of data. Often times, this results in the fact that only one process at a time can access the data, which we will call a \textbf{bottleneck}. This introduces sequentialness, and thus we loose in scalability.
 
-We can therefore conclude that the goal of the designer of data structures is to prevent bottlenecks by avoiding contention on the same data points as much as possible
+We can therefore conclude that the goal of the designer of data structures is to prevent bottlenecks by avoiding contention on the same data points as much as possible, we call this \textit{conflict-freedom}
 
 \subsection{What are Degradable Data Structures ?}
+Many libraries provide really performant and scalable implementation of classical data structures for concurrent programming, for example,  the Java.Util.Concurrent library \cite{java_concurrent} provides wait-free and linearizable objects. However, the efficiency of these implementations are somewhat limited in a lot of situations, as they are supposed to respect to the letter the specifications (interfaces) of the data structures. Most of the time, these specifications are not designed with performance in mind, rather ease-of-use or generalizability. For example, a classical implementation of a counter needs the increment operation to return the value of the counter. There might be some situations when all these constraints are not necessary, and we loose in performance for nothing.
 
+The idea behind degradation is to remove some constraints these specifications when they are not necessary. In the example of the counter for instance, if we say that we do not need for the increment operation to return the value, we can implement the object in such a way that the increment operation only updates a local value to the thread, and we gather the values only when the read operation is called. This would render the increment operation perfectly scalable, and thus really performant.
+
+This is one example of how we can degrade an object, but there are many other solutions, and the work being done right now is to generalize this idea, and formalize it. A key insight is that operations can be implemented in a conflict-free manner, and thus scale, when their permutation is indistinguishable for future operations. This is an extension of the idea of commutativity from Austin Clements et al. \cite{scalable}. This can be understood quite intuitively : if the order of operations matters little, they can be applied locally and gathered whenever, thus ensuring conflict-freedom.
 
 \subsection{How do we find where to apply degradation ?}
 
@@ -102,6 +114,9 @@ We can therefore conclude that the goal of the designer of data structures is to
 \section{Performance Analysis of Apache Ignite}
 
 \section{Performance Evaluation}
+
+\section{Conclusions}
+
 
 
 
@@ -111,6 +126,7 @@ We can therefore conclude that the goal of the designer of data structures is to
 \bibitem{gcpcompute} \href{https://cloud.google.com/compute/docs}{Google Cloud Platform Compute Engine}
 \bibitem{moore} \href{https://ieeexplore.ieee.org/document/591665}{R. R. Schaller, "Moore's law: past, present and future," in IEEE Spectrum, vol. 34, no. 6, pp. 52-59, June 1997, doi: 10.1109/6.591665.}
 \bibitem{amdahl} \href{https://conservancy.umn.edu/handle/11299/104341}{Gene M. Amdahl (1989), Oral history interview with Gene M. Amdahl, Charles Babbage Institute, University of Minnesota, hdl:11299/104341.}
+\bibitem{java_concurrent} \href{https://docs.oracle.com/javase/8/docs/api/index.html?java/util/concurrent/package-summary.html}{Java.Util.Concurrent}
 
 \end{thebibliography}
 
