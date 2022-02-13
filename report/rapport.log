@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  10 FEB 2022 11:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  13 FEB 2022 13:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,13 +490,13 @@ LaTeX Info: Redefining \nameref on input line 16.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -505,27 +505,28 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <moore.jpg, id=141, 484.81125pt x 354.32375pt>
 File: moore.jpg Graphic file (type jpg)
 <use moore.jpg>
-Package pdftex.def Info: moore.jpg  used on input line 46.
+Package pdftex.def Info: moore.jpg  used on input line 48.
 (pdftex.def)             Requested size: 199.16928pt x 145.56563pt.
 <amdahl.png, id=142, 518.93875pt x 328.22626pt>
 File: amdahl.png Graphic file (type png)
 <use amdahl.png>
-Package pdftex.def Info: amdahl.png  used on input line 51.
+Package pdftex.def Info: amdahl.png  used on input line 53.
 (pdftex.def)             Requested size: 199.16928pt x 125.97433pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./moore.jpg> <./amdahl.png>]
-Underfull \hbox (badness 1655) in paragraph at lines 82--83
+Underfull \hbox (badness 1655) in paragraph at lines 84--85
 []\OT1/ptm/m/n/10 We next will de-tail the in-for-ma-tion we gath-ered by
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
- \OT1/ptm/m/it/10 2) Find-ings: [][][] \OT1/ptm/m/n/10 Con-cur-rentMap dans Gri
-d-CacheCon-cur-
- []
-
+<coarse_grained.png, id=171, 451.6875pt x 376.40625pt>
+File: coarse_grained.png Graphic file (type png)
+<use coarse_grained.png>
+Package pdftex.def Info: coarse_grained.png  used on input line 148.
+(pdftex.def)             Requested size: 199.16928pt x 165.97534pt.
+ [3 <./coarse_grained.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -537,27 +538,27 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3] (./rapport.aux)
+[4] (./rapport.aux)
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 697028E6CCEDEB1BAE8CBFCD6DD4BB08;4535.
+(rerunfilecheck)             Checksum: AD095173BB7E0B76C5D2EFC3B067067B;4532.
  ) 
 Here is how much of TeX's memory you used:
- 12293 strings out of 478353
- 196565 string characters out of 5854636
- 509455 words of memory out of 5000000
- 30232 multiletter control sequences out of 15000+600000
+ 12304 strings out of 478353
+ 196764 string characters out of 5854636
+ 509627 words of memory out of 5000000
+ 30239 multiletter control sequences out of 15000+600000
  436681 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,8n,63p,2386b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,63p,2388b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
 hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (3 pages, 125204 bytes).
+Output written on rapport.pdf (4 pages, 137052 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 280 words of extra memory for PDF output out of 10000 (max. 10000000)
 
