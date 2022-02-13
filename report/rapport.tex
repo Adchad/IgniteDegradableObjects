@@ -167,11 +167,13 @@ This study allowed us to identify the key data structure of the whole applicatio
 
 Unfortunately for our purposes, this map is really well optimized, at it is the most important point in the data store. It is not degradable from what we were able to see, as all the important methods are used. 
 
-Finding another potential source of contention using this manual analysis of the code is .
+Finding another potential source of contention using this manual analysis of the code is not a very good idea : there are too many classes and lines of code in Ignite, such that it would take way too long to find a issue in it if there even is one. 
 
 \subsection{Profiling}
 \subsubsection{Idea}
 Analyser le call stack de la JVM quand ignite tourne pour identifier les classes et methodes qui consomment le plus de temps CPU, pour identifier la source des bottlenecks
+
+As explained, parsing the code manually is not a good idea. Our next idea is thus to use a tool to identify issues in the software.
 \subsubsection{Method}
 D'abord, essayé de recuperer le call stack et faire un flame graph avec perf, mais la methode ne fonctionne pas très bien, seules les methodes JIT sont visibles par perf.
 
@@ -190,13 +192,10 @@ Mettre des sondes aux endroits suspectés de causer le bottleneck, ...
 \subsubsection{Results}
 C'est pas la bonne direction visiblement :(.
 
-\subsection{Going further}
 \bigbreak
 
 
-
-\bigbreak
-\section{Performance Evaluation}
+\section{Going Further}
 \bigbreak
 \section{Conclusions}
 \bigbreak
