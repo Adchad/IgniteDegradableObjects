@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 00:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 00:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -521,26 +521,29 @@ Underfull \hbox (badness 1655) in paragraph at lines 85--86
  []
 
 [2 <./amdahl.png>]
-<coarse_grained.png, id=166, 451.6875pt x 376.40625pt>
+<coarse_grained.png, id=165, 451.6875pt x 376.40625pt>
 File: coarse_grained.png Graphic file (type png)
 <use coarse_grained.png>
-Package pdftex.def Info: coarse_grained.png  used on input line 149.
+Package pdftex.def Info: coarse_grained.png  used on input line 135.
 (pdftex.def)             Requested size: 256.0748pt x 213.40509pt.
-<hotspot.png, id=167, 727.96968pt x 211.54031pt>
+<hotspot.png, id=166, 727.96968pt x 211.54031pt>
 File: hotspot.png Graphic file (type png)
 <use hotspot.png>
-Package pdftex.def Info: hotspot.png  used on input line 155.
+Package pdftex.def Info: hotspot.png  used on input line 141.
 (pdftex.def)             Requested size: 516.0pt x 149.94934pt.
- [3]
-<selftime.png, id=180, 1057.9525pt x 582.175pt>
+ [3 <./coarse_grained.png>] [4 <./hotspot.png (PNG copy)>]
+<selftime.png, id=187, 1057.9525pt x 582.175pt>
 File: selftime.png Graphic file (type png)
 <use selftime.png>
-Package pdftex.def Info: selftime.png  used on input line 204.
+Package pdftex.def Info: selftime.png  used on input line 203.
 (pdftex.def)             Requested size: 256.0748pt x 140.9152pt.
 
-Underfull \vbox (badness 7451) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./coarse_grained.png>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./selftime.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -552,16 +555,18 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./hotspot.png (PNG copy)> <./selftime.png>] (./rapport.aux)
+[6
+
+] (./rapport.aux)
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 998A20BA6B665000C5DAD6AEEA103EFA;4361.
+(rerunfilecheck)             Checksum: 962886F3B230033D7196BD62E2559BE0;4364.
  ) 
 Here is how much of TeX's memory you used:
  12325 strings out of 478353
- 197065 string characters out of 5854636
+ 197068 string characters out of 5854636
  512932 words of memory out of 5000000
  30254 multiletter control sequences out of 15000+600000
- 436681 words of font info for 85 fonts, out of 8000000 for 9000
+ 435574 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,63p,2388b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
@@ -569,10 +574,10 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
 hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (5 pages, 336106 bytes).
+Output written on rapport.pdf (6 pages, 336633 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
  282 words of extra memory for PDF output out of 10000 (max. 10000000)
 

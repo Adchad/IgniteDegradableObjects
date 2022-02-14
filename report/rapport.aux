@@ -45,20 +45,30 @@
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Performance Analysis of Apache Ignite}{3}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Desired Outcome of the analysis}{3}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Broad benchmarking}{3}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces YCSB Benchmark on Apache Ignite, while varying the amount of client threads in parallel, three different workloads.\relax }}{3}{figure.caption.3}\protected@file@percent }
+\newlabel{coarse_grained}{{3}{3}{YCSB Benchmark on Apache Ignite, while varying the amount of client threads in parallel, three different workloads.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}1}Idea}{3}{subsubsection.4.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}2}Method}{3}{subsubsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}3}Results}{3}{figure.caption.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Understanding of the system}{3}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Idea}{3}{subsubsection.4.3.1}\protected@file@percent }
 \citation{perf}
 \citation{jprofiler}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces YCSB Benchmark on Apache Ignite, while varying the amount of client threads in parallel, three different workloads.\relax }}{4}{figure.caption.3}\protected@file@percent }
-\newlabel{coarse_grained}{{3}{4}{YCSB Benchmark on Apache Ignite, while varying the amount of client threads in parallel, three different workloads.\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hot spot list of Apache Ignite with 30 client threads.\relax }}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{hotspot}{{4}{4}{Hot spot list of Apache Ignite with 30 client threads.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}3}Results}{4}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Understanding of the system}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Idea}{4}{subsubsection.4.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}2}Findings}{4}{subsubsection.4.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Profiling}{4}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}1}Idea}{4}{subsubsection.4.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}2}Method}{4}{subsubsection.4.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}3}Results}{4}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }}{5}{figure.caption.5}\protected@file@percent }
+\newlabel{selftime}{{5}{5}{Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Fine-grained Probing}{5}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}1}Idea}{5}{subsubsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}2}Method}{5}{subsubsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}3}Results}{5}{subsubsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Going Further}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{5}{section.6}\protected@file@percent }
 \bibcite{scalable}{1}
 \bibcite{ignite}{2}
 \bibcite{gcpcompute}{3}
@@ -68,15 +78,5 @@
 \bibcite{YCSB}{7}
 \bibcite{jprofiler}{8}
 \bibcite{perf}{9}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hot spot list of Apache Ignite with 30 client threads.\relax }}{5}{figure.caption.4}\protected@file@percent }
-\newlabel{hotspot}{{4}{5}{Hot spot list of Apache Ignite with 30 client threads.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }}{5}{figure.caption.5}\protected@file@percent }
-\newlabel{selftime}{{5}{5}{Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Fine-grained Probing}{5}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}1}Idea}{5}{subsubsection.4.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}2}Method}{5}{subsubsection.4.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-E}3}Results}{5}{subsubsection.4.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Going Further}{5}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{5}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{5}{section*.6}\protected@file@percent }
-\gdef \@abspage@last{5}
+\@writefile{toc}{\contentsline {section}{References}{6}{section*.6}\protected@file@percent }
+\gdef \@abspage@last{6}

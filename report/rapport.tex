@@ -15,7 +15,7 @@
 
 \begin{document}
 
-\title{Perfomance Analysis Of A Modern Data Store}
+\title{Performance Analysis Of A Modern Data Store}
 
 \author{\IEEEauthorblockN{Adam CHADER}
 \IEEEauthorblockA{\textit{PDS track, Master of Computer Science} \\
@@ -29,7 +29,7 @@ adam.chader@telecom-paris.fr}
 \pagestyle{plain}
 
 \begin{abstract}
-Nowadays, parallelism is a key aspect of software engineering, and essential for perfomant programs. However, concurrent data accesses are a big failing point which can drastically reduce the scalability of a piece of software. Designing parallel software is complicated, and a lot of libraries exist to provide ready-made, optimized data structures for concurrency. However, these libraries seek generalizability, and not efficiency. It has been observed that the entire specification of an object is not necessary for a given program, many only use a few methods that are available, and not all of them. By degrading the specification of objects, to make them perfectly tailored for a specific use case, we can change their implementation and improve performances. We propose applying this concept to a complex, modern data store, Apache Ignite, to figure out whether we can improve it's performance without changing a single line of code, but by changing the objects in the libraries used to degraded ones.
+Nowadays, parallelism is a key aspect of software engineering, and essential for performant programs. However, concurrent data accesses are a big failing point which can drastically reduce the scalability of a piece of software. Designing parallel software is complicated, and a lot of libraries exist to provide ready-made, optimized data structures for concurrency. However, these libraries seek generalizability, and not efficiency. It has been observed that the entire specification of an object is not necessary for a given program, many only use a few methods that are available, and not all of them. By degrading the specification of objects, to make them perfectly tailored for a specific use case, we can change their implementation and improve performances. We propose applying this concept to a complex, modern data store, Apache Ignite, to figure out whether we can improve it's performance without changing a single line of code, but by changing the objects in the libraries used to degraded ones.
 
 \end{abstract}
 
@@ -61,7 +61,7 @@ Historically, it was the responsibility of the end programmer to parallelise the
 
 
 \subsection{Work}
-This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweeking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The idea is to take real industrial code, and change some of the objects used for degraded ones without having to change any of the code, and observe the increase in performance.
+This project is a part of a bigger project around \textit{Degradable Data Structures}. These structures will be explained in more detail further in this paper. Simply put, these data structures are created by tweaking the specifications of classical data structures, in order to be able to change their implementations to better ones allowing for better scalability or performance. The idea is to take real industrial code, and change some of the objects used for degraded ones without having to change any of the code, and observe the increase in performance.
 
 \subsection{Scope of this project}
 The work being done here is the applications of these degraded data structures to a data store : Apache Ignite \cite{ignite}. We first need to locate situations in the source of the data store where it is judicious to apply degradation. This is done by benchmarking the application, and pinpointing the source of eventual bottlenecks, then figuring out whether or not degradation is possible.
@@ -70,9 +70,9 @@ The work being done here is the applications of these degraded data structures t
 This project made the following contributions to Apache Ignite:
 \begin{itemize}
   \item Benchmarking
-  \item Perfomance Analysis
+  \item Performance Analysis
   \item Identification of bottlenecks
-  \item Method for fiding the probable causes of bottlenecks
+  \item Method for finding the probable causes of bottlenecks
 \end{itemize}
 
 \subsection{Outline}
@@ -96,9 +96,6 @@ The approach of Austin Clements \cite{scalable} team is very similar to the work
 
 In the scalable commutativity rule, they work on the interface of the linux kernel, whereas this work is more geared towards data stores and their data structures.
 
-\textbf{Rajouter bcp ici}
-
-
 \bigbreak 
 
 \section{Degradable Data Structures}
@@ -118,8 +115,6 @@ The idea behind degradation is to remove some of the constraints of these specif
 
 This is one example of how we can degrade an object, but there are many other solutions, and the work being done right now is to generalize this idea, and formalize it. A key insight is that operations can be implemented with less conflicts, and thus scale more, when their permutation is indistinguishable for future operations. This is an extension of the idea of commutativity from Austin Clements et al. \cite{scalable}. This can be understood quite intuitively : if the order of operations matters little, they can be applied locally and gathered whenever, thus ensuring conflict-freedom.
 
-\textbf{Rajouter bcp ici}
-
 
 \subsection{How do we find where to apply degradation ?}
 The goal of this project is to apply degradation to a modern, complex software project to see if it can improve performance. To apply them in a way that is significant to performance, we need to locate data structures that are either very important to the whole execution, or that are the cause of a decrease in performance or scalability, \textit{i.e.} bottlenecks. The key question we will try to answer in the rest of this paper is then : How can we identify bottlenecks and their root cause in modern applications ?
@@ -133,17 +128,8 @@ Ideally, this study will result in the identification of a bottleneck, meaning t
 
 As explained before, we will be working on Apache Ignite, an in-memory data store, where the data is stored in key-value pairs. It is a very complex piece of software, and has over 1.5 million SLOC.
 
+
 \subsection{Broad benchmarking}
-\subsubsection{Idea}
-We went into this without any prior knowledge of the system. Our first goal was then to get to know the system, and see whether we could identify a bottleneck from the get go. To do these things, we decided to do a general, coarse-grained benchmarking of the whole system. To be able to identify a bottleneck, we ran several benchmarks while increasing the client load, to see if Ignite could scale.
-\subsubsection{Method}
-We run Apache Ignite on a GCP compute engine with 60 virtual CPUs. We need this high count of cores to observe the behavior of the system when it is forced to reach a high amount of parallelism. With many cores, the effect of bottlenecks will become more apparent, and easier to identify.
-
-For our benchmarking purposes, we use YCSB \cite{YCSB}. It is a very complete benchmarking framework for key-value stores. It makes available different workloads to apply to our data store. We focus on 3 different workloads : the first one, "A" is write-intensive, with 50\% of update requests and 50\% of reads. The second one, "B" is balanced, with 95\% of reads and 5\% of updates. The third one, "C" has 100\% of reads.
-Varying the amount of writes and reads and the amount of clients will allow us to make hypothesis on the source of the bottleneck. 
-First, if we notice that when we increase the number of parallel clients, the total number of operations per second starts caping, then it means there probably is a bottleneck. Then, if we notice for example that a bottleneck is only present for the workload A, it means that it is the write operation that is costly. We can then locate more easily the root cause.
-
-\subsubsection{Results}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=90mm]{coarse_grained.png}}
@@ -157,8 +143,21 @@ First, if we notice that when we increase the number of parallel clients, the to
 \label{hotspot}
 \end{figure*}
 
+\subsubsection{Idea}
+We went into this without any prior knowledge of the system. Our first goal was then to get to know the system, and see whether we could identify a bottleneck from the get go. To do these things, we decided to do a general, coarse-grained benchmarking of the whole system. To be able to identify a bottleneck, we ran several benchmarks while increasing the client load, to see if Ignite could scale.
+\subsubsection{Method}
+We run Apache Ignite on a GCP compute engine with 60 virtual CPUs. We need this high count of cores to observe the behavior of the system when it is forced to reach a high amount of parallelism. With many cores, the effect of bottlenecks will become more apparent, and easier to identify.
+
+For our benchmarking purposes, we use YCSB \cite{YCSB}. It is a very complete benchmarking framework for key-value stores. It makes available different workloads to apply to our data store. We focus on 3 different workloads : the first one, "A" is write-intensive, with 50\% of update requests and 50\% of reads. The second one, "B" is balanced, with 95\% of reads and 5\% of updates. The third one, "C" has 100\% of reads.
+Varying the amount of writes and reads and the amount of clients will allow us to make hypothesis on the source of the bottleneck. 
+First, if we notice that when we increase the number of parallel clients, the total number of operations per second starts capping, then it means there probably is a bottleneck. Then, if we notice for example that a bottleneck is only present for the workload A, it means that it is the write operation that is costly. We can then locate more easily the root cause.
+
+\subsubsection{Results}
+
+
+
 The results of this first benchmarking are in Fig.~\ref{coarse_grained}.
-As you can see, the total throughput, meaning the total number of operations per second for all clients increases when we increase the total number of clients, and it starts caping at aroung 12 parallel threads. There is in fact a bottleneck in the application.
+As you can see, the total throughput, meaning the total number of operations per second for all clients increases when we increase the total number of clients, and it starts capping at around 12 parallel threads. There is in fact a bottleneck in the application.
 
 Another interesting observation is that the 3 different workloads have sensibly the same performances, meaning that the bottleneck is not on the data itself, but rather on the logic of the application, and how it manages client requests.
 
@@ -206,8 +205,7 @@ To link this to the bottleneck we noticed prior, we then need to ensure that the
 \label{selftime}
 \end{figure}
 
-Unfortunately, JProfiler is a very costly tool, and changes the execution of the program a lot. The way we use it, JProfiler periodically samples the call stack, and sends it via ssh to a remote computer where we treat the data. This introduces a significant overhead. So much so that from the 35000 operations per second we were abled to reach prior (Fig. ~\ref{coarse_grained}), we now only reach around 7000 
-
+As you can see, there is an increase in the time percentage of the take method when we increase the amount of client threads. Unfortunately, JProfiler is a very costly tool, and changes the execution of the program a lot. The way we use it, JProfiler periodically samples the call stack, and sends it via ssh to a remote computer where we treat the data. This introduces a significant overhead. So much so that from the 35000 operations per second we were able to reach prior (Fig.~\ref{coarse_grained}), we now only reach around 7000. We also reach the performance cap quicker, at around 3 client threads. This is why we also see capping in the time percentage of the take method in the graph we plotted. We therefore can't conclude only with profiling, as it is impossible to verify if the bottleneck is in fact caused by it. 
 
 \subsection{Fine-grained Probing}
 \subsubsection{Idea}
@@ -225,10 +223,9 @@ C'est pas la bonne direction visiblement :(.
 \bigbreak
 \section{Conclusions}
 
-\bigbreak
 
 
-
+\pagebreak
 \begin{thebibliography}{00}
 \bibitem{scalable} \href{https://dl.acm.org/doi/10.1145/2699681}{Austin T. Clements, M. Frans Kaashoek, Nickolai Zeldovich, Robert T. Morris, and Eddie Kohler. 2015. The scalable commutativity rule: Designing scalable software for multicore processors. ACM Trans. Comput. Syst. 32, 4, Article 10 (January 2015), 47 pages.}
 \bibitem{ignite} \href{https://ignite.apache.org/docs/latest/}{Apache Ignite}
