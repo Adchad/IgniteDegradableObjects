@@ -29,7 +29,8 @@ adam.chader@telecom-paris.fr}
 \pagestyle{plain}
 
 \begin{abstract}
-Ceci est un abstract
+Nowadays, parallelism is a key aspect of software engineering, and essential for perfomant programs. However, concurrent data accesses are a big failing point which can drastically reduce the scalability of a piece of software. Designing parallel software is complicated, and a lot of libraries exist to provide ready-made, optimized data structures for concurrency. However, these libraries seek generalizability, and not efficiency. It has been observed that the entire specification of an object is not necessary for a given program, many only use a few methods that are available, and not all of them. By degrading the specification of objects, to make them perfectly tailored for a specific use case, we can change their implementation and improve performances. We propose applying this concept to a complex, modern data store, Apache Ignite, to figure out whether we can improve it's performance without changing a single line of code, but by changing the objects in the libraries used to degraded ones.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -145,10 +146,16 @@ First, if we notice that when we increase the number of parallel clients, the to
 \subsubsection{Results}
 
 \begin{figure}[!ht]
-\centerline{\includegraphics[width=70mm]{coarse_grained.png}}
+\centerline{\includegraphics[width=90mm]{coarse_grained.png}}
 \caption{YCSB Benchmark on Apache Ignite, while varying the amount of client threads in parallel, three different workloads.}
 \label{coarse_grained}
 \end{figure}
+
+\begin{figure*}[!ht]
+\includegraphics[width=\textwidth]{hotspot.png}
+\caption{Hot spot list of Apache Ignite with 30 client threads.}
+\label{hotspot}
+\end{figure*}
 
 The results of this first benchmarking are in Fig.~\ref{coarse_grained}.
 As you can see, the total throughput, meaning the total number of operations per second for all clients increases when we increase the total number of clients, and it starts caping at aroung 12 parallel threads. There is in fact a bottleneck in the application.
@@ -158,7 +165,7 @@ Another interesting observation is that the 3 different workloads have sensibly 
 \subsection{Understanding of the system}
 \subsubsection{Idea}
 Now that we have identified a bottleneck, the burning question is : why ? How can we find the root cause ?
-What we first did is to look at the code of Ignite to undersand the logic of the application. Find the entry points and the important data structures, to see where contention could occur.
+What we first did is to look at the code of Ignite to understand the logic of the application. Find the entry points and the important data structures, to see where contention could occur.
 
 As explained before, Ignite is a very dense piece of software with a lot of lines of code. To know where to look, we followed the journey of one request and how it is treated by the data store.
 
@@ -171,17 +178,36 @@ Finding another potential source of contention using this manual analysis of the
 
 \subsection{Profiling}
 \subsubsection{Idea}
-Analyser le call stack de la JVM quand ignite tourne pour identifier les classes et methodes qui consomment le plus de temps CPU, pour identifier la source des bottlenecks
+As explained, parsing the code manually is not a good idea. Our next idea is thus to use a tool to identify issues in the software. Precisely, we want to be able to see what objects and methods are taking a lot of time in the execution. Ideally we want to see an object which takes increasingly more time as we increase the load. This would mean that it is the cause of the bottleneck. What we are looking for is a way to see the call stack of the JVM. 
 
-As explained, parsing the code manually is not a good idea. Our next idea is thus to use a tool to identify issues in the software.
 \subsubsection{Method}
-D'abord, essayé de recuperer le call stack et faire un flame graph avec perf, mais la methode ne fonctionne pas très bien, seules les methodes JIT sont visibles par perf.
+We first tried to use the perf linux profiler \cite{perf}, which was able to fetch the call stack of the JVM process, and we then were able to represent this data in a flame graph. Unfortunately, perf is a linux tool, and thus has no access to the inner workings of the JVM. In fact, the only methods perf is able to fetch from the call stack are the just-in-time (JIT) compiled methods. The JIT compilation allows some java methods to behave like native ones by compiling them at runtime. These methods are then recognized by perf just like native ones. Only certain methods with high usage are JIT, such that the data we obtained is incomplete.
 
-Deuxième solution : utiliser JProfiler
+To obtain a more complete amount of data, we need to use JVM specific tools. We used namely JProfiler \cite{jprofiler} to profile the JVM during the execution of Ignite. It has many features, but what interests us is the call tree feature : by regularly sampling the JVM call stack, which is a representation of all the methods called at a certain time, we build a tree of methods called in the whole execution and the time taken by each method. A very interesting feature of JProfiler is the hot spots list : it takes the call tree, and sorts the methods by their self time.
+
+The self time is the total time in the method minus the time in the nested methods.
+
 \subsubsection{Results}
-Avec JProfiler, identification d'une source potentielle du bottleneck -> StripedExecutor.
+The hot spot list of Ignite we obtained for 30 client threads is in Fig.4.
 
-Mais JProfiler dégrade bcp les performances, donc pas moyen d'être fixé
+We can see a lot of methods in the list, but a few are very interesting to us.
+
+First of all, as explained before, we are running JProfiler for Ignite with 30 client threads. We know for a fact that with this load, there is a bottleneck, thus we are expecting to see a method taking a considerable amount of time.
+
+The first method we can see that takes a lot of time is GridRestProcessor.body. When looking in the code, we can see that this method is just a starting point for all methods below, and as such, takes up a lot of time, but can't be considered the cause of a bottleneck.
+
+The two methods below however, surrounded by red, are very interesting. They are linked, as the StripeConcurrentQueue.take calls Queue.poll. As you can see, these methods take up to 12\% of the total execution time, which is considerable. Going into the code, we can see that the StripeConcurrentQueue is a data structure supposed to store the requests for them to be processed. The take method is the reading of this queue by the Ignite workers. It is a very interesting object, as it is in a key location for Ignite, at the entry point. It is also a object that seems to have concurrent accesses, and that takes a lot of execution time when there is a high load. As you can see, it is a very promising object for our purposes.
+
+To link this to the bottleneck we noticed prior, we then need to ensure that the time taken by the StripeConcurrentQueue increases when we increase the load. We therefore plotted the portion of time taken by these methods in Fig. 5.
+
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=90mm]{selftime.png}}
+\caption{Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load}
+\label{selftime}
+\end{figure}
+
+Unfortunately, JProfiler is a very costly tool, and changes the execution of the program a lot. The way we use it, JProfiler periodically samples the call stack, and sends it via ssh to a remote computer where we treat the data. This introduces a significant overhead. So much so that from the 35000 operations per second we were abled to reach prior (Fig. ~\ref{coarse_grained}), we now only reach around 7000 
+
 
 \subsection{Fine-grained Probing}
 \subsubsection{Idea}
@@ -198,6 +224,7 @@ C'est pas la bonne direction visiblement :(.
 \section{Going Further}
 \bigbreak
 \section{Conclusions}
+
 \bigbreak
 
 
@@ -210,7 +237,8 @@ C'est pas la bonne direction visiblement :(.
 \bibitem{amdahl} \href{https://conservancy.umn.edu/handle/11299/104341}{Gene M. Amdahl (1989), Oral history interview with Gene M. Amdahl, Charles Babbage Institute, University of Minnesota, hdl:11299/104341.}
 \bibitem{java_concurrent} \href{https://docs.oracle.com/javase/8/docs/api/index.html?java/util/concurrent/package-summary.html}{Java.Util.Concurrent}
 \bibitem{YCSB} \href{https://ycsb.site}{YCSB}
-
+\bibitem{jprofiler} \href{https://www.ej-technologies.com/products/jprofiler/overview.html}{JProfiler}
+\bibitem{perf} \href{https://perf.wiki.kernel.org/index.php/Main_Page}{Perf linux profiler}
 \end{thebibliography}
 
 \vspace{12pt}
