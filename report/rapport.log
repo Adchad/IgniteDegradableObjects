@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 00:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,7 +574,7 @@ ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
 hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (6 pages, 336633 bytes).
+Output written on rapport.pdf (6 pages, 336536 bytes).
 PDF statistics:
  253 PDF objects out of 1000 (max. 8388607)
  224 compressed objects within 3 object streams
