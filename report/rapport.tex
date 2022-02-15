@@ -153,9 +153,6 @@ Varying the amount of writes and reads and the amount of clients will allow us t
 First, if we notice that when we increase the number of parallel clients, the total number of operations per second starts capping, then it means there probably is a bottleneck. Then, if we notice for example that a bottleneck is only present for the workload A, it means that it is the write operation that is costly. We can then locate more easily the root cause.
 
 \subsubsection{Results}
-
-
-
 The results of this first benchmarking are in Fig.~\ref{coarse_grained}.
 As you can see, the total throughput, meaning the total number of operations per second for all clients increases when we increase the total number of clients, and it starts capping at around 12 parallel threads. There is in fact a bottleneck in the application.
 
@@ -209,23 +206,59 @@ As you can see, there is an increase in the time percentage of the take method w
 
 \subsection{Fine-grained Probing}
 \subsubsection{Idea}
-Hypothèse d'une source de bottleneck, mais JProfiler modifie beaucoup trop l'execution, besoin d'une méthode plus légère, moins intrusive
+The prior experiments with JProfiler gave us a hint on where to look : the StripeConcurrentQueue data structure seems to take a lot of CPU time, and is a very important entry point to the whole system. However, JProfiler modifies the execution too much, so much so that it is impossible to make any conclusions on whether the StripeConcurrentQueue is an interesting object to pursue. To get to the bottom of it, we need a lighter, less intrusive way of knowing if it is the source of the bottleneck or not.
 
 \subsubsection{Method}
-Mettre des sondes aux endroits suspectés de causer le bottleneck, ...
-\subsubsection{Results}
-C'est pas la bonne direction visiblement :(.
+The solution we landed on, was to manually probe the system, as we already knew were to look in a sense. We therefore put probes to measure the time taken by the StripeConcurrentQueue, and more precisely the Queue poll operation, which we suspect is the issue, as the Queue is the underlying data structure implemented with a \textit{ConcurrentLinkedQueue} from Java.Util.Concurrent.
 
+To avoid introducing more contention, we log the time taken in the method in thread local variables, and gather the data only upon receiving an outside signal, that we manually send to the process when the workload is finished.
+\subsubsection{Results}
+
+
+\begin{figure*}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{probe_throughput.png}
+         \caption{YCSB workload B of Apache Ignite with probing}
+         \label{benchmark_probe}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{probe_results.png}
+         \caption{Average time in Queue.poll (in ns)}
+         \label{avg_poll}
+     \end{subfigure}
+\caption{Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue}
+\label{probe}
+\end{figure*}
+
+The results we obtained can be seen in Fig.~\ref{probe}. As you can see in Fig.~\ref{benchmark_probe}, the probing is light enough so that the execution is not modified too much.We reach a throughput that is comparable to the one we reached prior at around 25000 operations/second. This is thanks to our thread local logging of the data we collect to avoid contention.
+
+Fig.~\ref{avg_poll} shows the evolution of the poll method when increasing the client load. As you can see, it clearly increases. Even more so, it is highly correlated with the evolution of the throughput (\textit{i.e} the performance), with a Pearson coefficient \cite{pearson} of $0.62$.
 \bigbreak
 
 
 \section{Going Further}
+We were able to expose a correlation between the performances of Apache Ignite, and the time taken by the Queue poll operation. It remains to be seen whether there is a causal relationship between the two. To do so, we would need to modify the poll method to see if there is a change in performance. This is where we come back to the main idea of this project. We should change the ConcurrentLinkedQueue implementation to a degraded one, and observe performance.
+
+Study of the ConcurrentLinkedQueue usage in Ignite shows that it isn't degradable in the first sense of the term, meaning that all key methods of the object are used. Namely, the poll, push and size methods are all used. However, there is another way of degrading a data structure, revolving on the way the object is used.
+
+If an object is used in a asymetric way, with threads that only do writing and threads that only do reading, and even more, if there only is one reader or one writer to the data structure, we could change the implementation of the object, by alleviating the safety constraints, and thus make it more performant and scalable.
+
+Unfortunately, we hadn't enough time to do this for this project.
+
+If it is discovered that the ConcurrentLinkedQueue degradation did not result in better performance, the solution would be going back to profiling Ignite. We were limited with JProfiler during the project as we were using a free trial. If we had had more time, we might have been able to tweek the profiling so that it is less taxing on the system, and thus have better insight on the behavior of Ignite, and where other bottlenecks could be.
+
+
 \bigbreak
 \section{Conclusions}
 
 
 
-\pagebreak
+\bigbreak
+
 \begin{thebibliography}{00}
 \bibitem{scalable} \href{https://dl.acm.org/doi/10.1145/2699681}{Austin T. Clements, M. Frans Kaashoek, Nickolai Zeldovich, Robert T. Morris, and Eddie Kohler. 2015. The scalable commutativity rule: Designing scalable software for multicore processors. ACM Trans. Comput. Syst. 32, 4, Article 10 (January 2015), 47 pages.}
 \bibitem{ignite} \href{https://ignite.apache.org/docs/latest/}{Apache Ignite}
@@ -236,6 +269,7 @@ C'est pas la bonne direction visiblement :(.
 \bibitem{YCSB} \href{https://ycsb.site}{YCSB}
 \bibitem{jprofiler} \href{https://www.ej-technologies.com/products/jprofiler/overview.html}{JProfiler}
 \bibitem{perf} \href{https://perf.wiki.kernel.org/index.php/Main_Page}{Perf linux profiler}
+\bibitem{pearson} \href{https://libguides.library.kent.edu/SPSS/PearsonCorr}{Pearson Coefficient}
 \end{thebibliography}
 
 \vspace{12pt}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 11:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  15 FEB 2022 19:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,14 +535,21 @@ Package pdftex.def Info: hotspot.png  used on input line 141.
 <selftime.png, id=187, 1057.9525pt x 582.175pt>
 File: selftime.png Graphic file (type png)
 <use selftime.png>
-Package pdftex.def Info: selftime.png  used on input line 203.
+Package pdftex.def Info: selftime.png  used on input line 200.
 (pdftex.def)             Requested size: 256.0748pt x 140.9152pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<probe_throughput.png, id=190, 453.695pt x 281.05pt>
+File: probe_throughput.png Graphic file (type png)
+<use probe_throughput.png>
+Package pdftex.def Info: probe_throughput.png  used on input line 222.
+(pdftex.def)             Requested size: 232.19843pt x 143.83963pt.
+<probe_results.png, id=191, 458.71375pt x 281.05pt>
+File: probe_results.png Graphic file (type png)
+<use probe_results.png>
+Package pdftex.def Info: probe_results.png  used on input line 229.
+(pdftex.def)             Requested size: 232.19843pt x 142.26576pt.
  [5 <./selftime.png>]
 
 ** Conference Paper **
@@ -557,27 +564,28 @@ Before submitting the final camera ready copy, remember to:
 
 [6
 
-] (./rapport.aux)
+ <./probe_throughput.png> <./probe_results.png>] (./rapport.aux)
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 962886F3B230033D7196BD62E2559BE0;4364.
+(rerunfilecheck)             Checksum: E1B82736ED56992E39E181870E622CBF;4361.
  ) 
 Here is how much of TeX's memory you used:
- 12325 strings out of 478353
- 197068 string characters out of 5854636
- 512932 words of memory out of 5000000
- 30254 multiletter control sequences out of 15000+600000
- 435574 words of font info for 84 fonts, out of 8000000 for 9000
+ 12353 strings out of 478353
+ 197625 string characters out of 5854636
+ 513380 words of memory out of 5000000
+ 30277 multiletter control sequences out of 15000+600000
+ 436652 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,8n,63p,2388b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,63p,2388b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/s
-hare/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (6 pages, 336536 bytes).
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy7.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on rapport.pdf (6 pages, 375873 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 53 named destinations out of 1000 (max. 500000)
- 282 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 275 PDF objects out of 1000 (max. 8388607)
+ 238 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 
