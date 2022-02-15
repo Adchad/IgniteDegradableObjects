@@ -99,7 +99,7 @@ In the scalable commutativity rule, they work on the interface of the linux kern
 \bigbreak 
 
 \section{Degradable Data Structures}
-The goal of this project is to improve the performances of Apache Ignite, by inserting existing degraded data structures in the place of traditional ones. We will therefore first explain to what extent the implementation of data structures is linked with performance of parallel applications. We shall then explain the principle behind the degrading of objects, and we will finally explain how we can find the places where it makes sense to apply this degradation.
+The goal of this project is to improve the performances of Apache Ignite, by inserting existing degraded data structures \cite{degradation} in the place of traditional ones. We will therefore first explain to what extent the implementation of data structures is linked with performance of parallel applications. We shall then explain the principle behind the degrading of objects, and we will finally explain how we can find the places where it makes sense to apply this degradation.
 
 \subsection{Contention and Scalability} 
 The relationship between the implementation of data structures and the performances of parallel applications is not immediate.
@@ -111,7 +111,7 @@ We can therefore conclude that the goal of the designer of data structures is to
 \subsection{What are Degradable Data Structures ?}
 Many libraries provide really performant and scalable implementations of classical data structures for concurrent programming, for example, the Java.Util.Concurrent library \cite{java_concurrent} provides wait-free and linearizable objects. However, the efficiency of these implementations is somewhat limited in a lot of situations, as they are supposed to respect to the letter the specifications (interfaces) of the data structures. Most of the time, these specifications are not designed with performance in mind, rather ease-of-use or generalizability. The goal of the software engineers behind the Concurrent library is not one specific project, rather being able to fit a lot of possible use cases. For example, a classical implementation of a counter needs the increment operation to return the value of the counter. There might be some situations when all these constraints are not necessary, and we loose in performance for nothing.
 
-The idea behind degradation is to remove some of the constraints of these specifications when they are not necessary. In the example of the counter for instance, if we say that we do not need for the increment operation to return the value, we can implement the object in such a way that the increment operation only updates a local value to the thread, and we gather the values only when the read operation is called. This would render the increment operation perfectly scalable, and thus really performant.
+The idea behind degradation, as described by Boubacar Kane and Pierre Sutra \cite{degradation} is to remove some of the constraints of these specifications when they are not necessary. In the example of the counter for instance, if we say that we do not need for the increment operation to return the value, we can implement the object in such a way that the increment operation only updates a local value to the thread, and we gather the values only when the read operation is called. This would render the increment operation perfectly scalable, and thus really performant.
 
 This is one example of how we can degrade an object, but there are many other solutions, and the work being done right now is to generalize this idea, and formalize it. A key insight is that operations can be implemented with less conflicts, and thus scale more, when their permutation is indistinguishable for future operations. This is an extension of the idea of commutativity from Austin Clements et al. \cite{scalable}. This can be understood quite intuitively : if the order of operations matters little, they can be applied locally and gathered whenever, thus ensuring conflict-freedom.
 
@@ -261,6 +261,7 @@ If it is discovered that the ConcurrentLinkedQueue degradation did not result in
 
 \begin{thebibliography}{00}
 \bibitem{scalable} \href{https://dl.acm.org/doi/10.1145/2699681}{Austin T. Clements, M. Frans Kaashoek, Nickolai Zeldovich, Robert T. Morris, and Eddie Kohler. 2015. The scalable commutativity rule: Designing scalable software for multicore processors. ACM Trans. Comput. Syst. 32, 4, Article 10 (January 2015), 47 pages.}
+\bibitem{degradation} Boubacar Kane, Pierre Sutra. Degradable Objects: A Principled and Efficient Approach to Data Consistency
 \bibitem{ignite} \href{https://ignite.apache.org/docs/latest/}{Apache Ignite}
 \bibitem{gcpcompute} \href{https://cloud.google.com/compute/docs}{Google Cloud Platform Compute Engine}
 \bibitem{moore} \href{https://ieeexplore.ieee.org/document/591665}{R. R. Schaller, "Moore's law: past, present and future," in IEEE Spectrum, vol. 34, no. 6, pp. 52-59, June 1997, doi: 10.1109/6.591665.}
