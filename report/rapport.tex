@@ -29,7 +29,7 @@ adam.chader@telecom-paris.fr}
 \pagestyle{plain}
 
 \begin{abstract}
-Nowadays, parallelism is a key aspect of software engineering, and essential for performant programs. However, concurrent data accesses are a big failing point which can drastically reduce the scalability of a piece of software. Designing parallel software is complicated, and a lot of libraries exist to provide ready-made, optimized data structures for concurrency. However, these libraries seek generalizability, and not efficiency. It has been observed that the entire specification of an object is not necessary for a given program, many only use a few methods that are available, and not all of them. By degrading the specification of objects, to make them perfectly tailored for a specific use case, we can change their implementation and improve performances. We propose applying this concept to a complex, modern data store, Apache Ignite, to figure out whether we can improve its performance without changing a single line of code, but by changing the objects in the libraries used to degraded ones.
+Nowadays, parallelism is a key aspect of software engineering, and is essential for performant programs. However, concurrent data accesses are a big failing point which can drastically reduce the scalability of a piece of software. Designing parallel software is complicated, and a lot of libraries exist to provide ready-made, optimized data structures for concurrency. However, these libraries seek generalizability, and not efficiency. It has been observed that the entire specification of an object is not necessary for a given program, many only use a few methods that are available, and not all of them. By degrading the specification of objects, to make them perfectly tailored for a specific use case, we can change their implementation and improve performances. We propose applying this concept to a complex, modern data store, Apache Ignite, to figure out whether we can improve its performance without changing a single line of code, but by changing the objects in the libraries used to degraded ones.
 
 \end{abstract}
 
@@ -47,12 +47,12 @@ Up until the beginning of the 21\textsuperscript{st} Century, there had existed 
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=70mm]{moore.jpg}}
-\caption{Moore's Law.}\label{moore}
+\caption{Moore's Law : Every two years, the total number of transistors per chip doubles}\label{moore}
 \end{figure}
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=70mm]{amdahl.png}}
-\caption{Amdahl's Law}
+\caption{Amdahl's Law : the speedup gained by increasing the number of processors is relative to the amount of sequential code (the serial fraction) of the program.}
 \label{amdahl}
 \end{figure}
 
@@ -139,7 +139,7 @@ As explained before, we will be working on Apache Ignite, an in-memory data stor
 
 \begin{figure*}[!ht]
 \includegraphics[width=\textwidth]{hotspot.png}
-\caption{Hot spot list of Apache Ignite with 30 client threads.}
+\caption{Hot spot list of Apache Ignite with 30 client threads. The methods are sorted by their total self time, which is : $time\ in\ the\ method - time\ in\ nested\ methods$.}
 \label{hotspot}
 \end{figure*}
 
@@ -230,7 +230,7 @@ To avoid introducing more contention, we log the time taken in the method in thr
          \caption{Average time in Queue.poll (in ns)}
          \label{avg_poll}
      \end{subfigure}
-\caption{Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue}
+\caption{Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue. The two graphs are correlated with a Pearson coefficient of 0.62.}
 \label{probe}
 \end{figure*}
 
@@ -245,17 +245,23 @@ We were able to expose a correlation between the performances of Apache Ignite, 
 
 Study of the ConcurrentLinkedQueue usage in Ignite shows that it isn't degradable in the first sense of the term, meaning that all key methods of the object are used. Namely, the poll, push and size methods are all used. However, there is another way of degrading a data structure, revolving on the way the object is used.
 
-If an object is used in a asymetric way, with threads that only do writing and threads that only do reading, and even more, if there only is one reader or one writer to the data structure, we could change the implementation of the object, by alleviating the safety constraints, and thus make it more performant and scalable.
+If an object is used in a asymmetric way, with threads that only do writing and threads that only do reading, and even more, if there only is one reader or one writer to the data structure, we could change the implementation of the object, by alleviating the safety constraints, and thus make it more performant and scalable.
 
 Unfortunately, we hadn't enough time to do this for this project.
 
-If it is discovered that the ConcurrentLinkedQueue degradation did not result in better performance, the solution would be going back to profiling Ignite. We were limited with JProfiler during the project as we were using a free trial. If we had had more time, we might have been able to tweek the profiling so that it is less taxing on the system, and thus have better insight on the behavior of Ignite, and where other bottlenecks could be.
+If it is discovered that the degradation of the ConcurrentLinkedQueue does not result in better performance, the solution would be going back to profiling Ignite. We were limited with JProfiler during the project as we were using a free trial. If we had had more time, we might have been able to tweak the profiling so that it is less taxing on the system, and thus have better insight on the behavior of Ignite, and where other bottlenecks could be.
 
 
 \bigbreak
 \section{Conclusions}
+Our goal was to apply degradable data structures in a modern application such that it had a significant effect on performance.
+To do so, we first identified a bottleneck in the data store Apache Ignite, and then proposed a method of identifying the root cause, by first doing a general coarse-grained profiling of the system, and then manually probing the system to remove the overhead caused by profiling. We discovered a candidate to degradation in the form of the ConcurrentLinkedQueue, but hadn't enough time to apply it.
 
 
+\bigbreak
+
+\section{Acknowledgments}
+This project was realised under the supervision of Pierre Sutra, and with the help of Boubacar Kane, whom I would like to thank dearly, as their advice and guidance was extremely helpful and insightful. 
 
 \bigbreak
 

@@ -22,15 +22,14 @@
 \citation{scalable}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Context}{1}{subsection.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Moore's Law.\relax }}{1}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Moore's Law : Every two years, the total number of transistors per chip doubles\relax }}{1}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{moore}{{1}{1}{Moore's Law.\relax }{figure.caption.1}{}}
+\newlabel{moore}{{1}{1}{Moore's Law : Every two years, the total number of transistors per chip doubles\relax }{figure.caption.1}{}}
 \citation{ignite}
 \citation{scalable}
 \citation{degradation}
-\citation{java_concurrent}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Amdahl's Law\relax }}{2}{figure.caption.2}\protected@file@percent }
-\newlabel{amdahl}{{2}{2}{Amdahl's Law\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Amdahl's Law : the speedup gained by increasing the number of processors is relative to the amount of sequential code (the serial fraction) of the program.\relax }}{2}{figure.caption.2}\protected@file@percent }
+\newlabel{amdahl}{{2}{2}{Amdahl's Law : the speedup gained by increasing the number of processors is relative to the amount of sequential code (the serial fraction) of the program.\relax }{figure.caption.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-B}}Work}{2}{subsection.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-C}}Scope of this project}{2}{subsection.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-D}}Contributions}{2}{subsection.1.4}\protected@file@percent }
@@ -39,6 +38,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}The Scalable Commutativity rule}{2}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Degradable Data Structures}{2}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Contention and Scalability}{2}{subsection.3.1}\protected@file@percent }
+\citation{java_concurrent}
 \citation{degradation}
 \citation{scalable}
 \citation{YCSB}
@@ -53,8 +53,8 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}2}Method}{3}{subsubsection.4.2.2}\protected@file@percent }
 \citation{perf}
 \citation{jprofiler}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hot spot list of Apache Ignite with 30 client threads.\relax }}{4}{figure.caption.4}\protected@file@percent }
-\newlabel{hotspot}{{4}{4}{Hot spot list of Apache Ignite with 30 client threads.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hot spot list of Apache Ignite with 30 client threads. The methods are sorted by their total self time, which is : $time\ in\ the\ method - time\ in\ nested\ methods$.\relax }}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{hotspot}{{4}{4}{Hot spot list of Apache Ignite with 30 client threads. The methods are sorted by their total self time, which is : $time\ in\ the\ method - time\ in\ nested\ methods$.\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}3}Results}{4}{subsubsection.4.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Understanding of the system}{4}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Idea}{4}{subsubsection.4.3.1}\protected@file@percent }
@@ -62,8 +62,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Profiling}{4}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}1}Idea}{4}{subsubsection.4.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}2}Method}{4}{subsubsection.4.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}3}Results}{4}{subsubsection.4.4.3}\protected@file@percent }
 \citation{pearson}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-D}3}Results}{5}{subsubsection.4.4.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }}{5}{figure.caption.5}\protected@file@percent }
 \newlabel{selftime}{{5}{5}{Evolution of the time taken by some methods relative to the total time of execution of Apache Ignite when increasing the client load\relax }{figure.caption.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Fine-grained Probing}{5}{subsection.4.5}\protected@file@percent }
@@ -86,8 +86,9 @@
 \newlabel{sub@benchmark_probe}{{a}{6}{YCSB workload B of Apache Ignite with probing\relax }{figure.caption.6}{}}
 \newlabel{avg_poll}{{6b}{6}{Average time in Queue.poll (in ns)\relax }{figure.caption.6}{}}
 \newlabel{sub@avg_poll}{{b}{6}{Average time in Queue.poll (in ns)\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue\relax }}{6}{figure.caption.6}\protected@file@percent }
-\newlabel{probe}{{6}{6}{Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue. The two graphs are correlated with a Pearson coefficient of 0.62.\relax }}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{probe}{{6}{6}{Manual probing of Apache Ignite to see the time usage of the Queue.poll method in StripeConcurrentQueue. The two graphs are correlated with a Pearson coefficient of 0.62.\relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Acknowledgments}{6}{section.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{6}{section*.7}\protected@file@percent }
 \gdef \@abspage@last{6}
