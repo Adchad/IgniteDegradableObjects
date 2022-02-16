@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  16 FEB 2022 10:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.3)  16 FEB 2022 10:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -502,12 +502,12 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<moore.jpg, id=137, 484.81125pt x 354.32375pt>
+<moore.jpg, id=141, 484.81125pt x 354.32375pt>
 File: moore.jpg Graphic file (type jpg)
 <use moore.jpg>
 Package pdftex.def Info: moore.jpg  used on input line 49.
 (pdftex.def)             Requested size: 199.16928pt x 145.56563pt.
-<amdahl.png, id=138, 518.93875pt x 328.22626pt>
+<amdahl.png, id=142, 518.93875pt x 328.22626pt>
 File: amdahl.png Graphic file (type png)
 <use amdahl.png>
 Package pdftex.def Info: amdahl.png  used on input line 54.
@@ -521,28 +521,28 @@ Underfull \hbox (badness 1655) in paragraph at lines 85--86
  []
 
 [2 <./amdahl.png>]
-<coarse_grained.png, id=168, 451.6875pt x 376.40625pt>
+<coarse_grained.png, id=172, 451.6875pt x 376.40625pt>
 File: coarse_grained.png Graphic file (type png)
 <use coarse_grained.png>
 Package pdftex.def Info: coarse_grained.png  used on input line 135.
 (pdftex.def)             Requested size: 256.0748pt x 213.40509pt.
-<hotspot.png, id=169, 727.96968pt x 211.54031pt>
+<hotspot.png, id=173, 727.96968pt x 211.54031pt>
 File: hotspot.png Graphic file (type png)
 <use hotspot.png>
 Package pdftex.def Info: hotspot.png  used on input line 141.
 (pdftex.def)             Requested size: 516.0pt x 149.94934pt.
  [3 <./coarse_grained.png>] [4 <./hotspot.png (PNG copy)>]
-<selftime.png, id=192, 1057.9525pt x 582.175pt>
+<selftime.png, id=196, 1057.9525pt x 582.175pt>
 File: selftime.png Graphic file (type png)
 <use selftime.png>
 Package pdftex.def Info: selftime.png  used on input line 200.
 (pdftex.def)             Requested size: 256.0748pt x 140.9152pt.
-<probe_throughput.png, id=195, 453.695pt x 281.05pt>
+<probe_throughput.png, id=199, 453.695pt x 281.05pt>
 File: probe_throughput.png Graphic file (type png)
 <use probe_throughput.png>
 Package pdftex.def Info: probe_throughput.png  used on input line 222.
 (pdftex.def)             Requested size: 232.19843pt x 143.83963pt.
-<probe_results.png, id=196, 458.71375pt x 281.05pt>
+<probe_results.png, id=200, 458.71375pt x 281.05pt>
 File: probe_results.png Graphic file (type png)
 <use probe_results.png>
 Package pdftex.def Info: probe_results.png  used on input line 229.
@@ -561,20 +561,14 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 [6 <./probe_throughput.png> <./probe_results.png>] (./rapport.aux)
-
-Package rerunfilecheck Warning: File `rapport.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `rapport.out':
-(rerunfilecheck)             Before: E1B82736ED56992E39E181870E622CBF;4361
-(rerunfilecheck)             After:  C857EF0FAAFF79E3E736A15D13B352BE;4480.
+Package rerunfilecheck Info: File `rapport.out' has not changed.
+(rerunfilecheck)             Checksum: C857EF0FAAFF79E3E736A15D13B352BE;4480.
  ) 
 Here is how much of TeX's memory you used:
- 12357 strings out of 478353
- 197669 string characters out of 5854636
+ 12358 strings out of 478353
+ 197680 string characters out of 5854636
  514798 words of memory out of 5000000
- 30278 multiletter control sequences out of 15000+600000
+ 30279 multiletter control sequences out of 15000+600000
  437759 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,63p,2388b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -585,10 +579,10 @@ msy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr
 /share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts
 /type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rapport.pdf (6 pages, 387472 bytes).
+Output written on rapport.pdf (6 pages, 387497 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 245 compressed objects within 3 object streams
+ 287 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
- 292 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 words of extra memory for PDF output out of 10000 (max. 10000000)
 
